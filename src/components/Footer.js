@@ -6,9 +6,8 @@ import { LinkedinWithCircle } from "@styled-icons/entypo-social/LinkedinWithCirc
 import { VimeoWithCircle } from "@styled-icons/entypo-social/VimeoWithCircle";
 import { SocialYoutubeCircular } from "@styled-icons/typicons/SocialYoutubeCircular";
 import { TwitterWithCircle } from "@styled-icons/entypo-social/TwitterWithCircle";
-import {Whatsapp} from "@styled-icons/remix-fill/Whatsapp"
-import {MailWithCircle} from "@styled-icons/entypo-social/MailWithCircle"
-
+import { Whatsapp } from "@styled-icons/remix-fill/Whatsapp";
+import { MailWithCircle } from "@styled-icons/entypo-social/MailWithCircle";
 
 const StyledFooter = styled.footer`
   font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
@@ -23,7 +22,7 @@ const StyledFooter = styled.footer`
   z-index: 300;
 
   @media (max-width: 1000px) {
-   height: 170px; 
+    height: 170px;
   }
 `;
 
@@ -32,14 +31,12 @@ const SocialNetContainer = styled.div`
   width: 60%;
   justify-content: space-between;
 
-
   @media (max-width: 1000px) {
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
   }
-
 `;
 
 const SocialStyledContainer = styled.div`
@@ -47,13 +44,11 @@ const SocialStyledContainer = styled.div`
   justify-content: space-between;
   width: 45%;
   @media (max-width: 1000px) {
-    height: 40px
+    height: 40px;
   }
   @media (max-width: 800px) {
     width: 60%;
-
   }
-  
 `;
 
 const SMLink = styled.a`
@@ -72,7 +67,6 @@ const SMLink = styled.a`
     transition: 0.3s;
   }
 `;
-
 
 const StyledFacebook = styled(FacebookCircle)`
   height: 30px;
@@ -110,21 +104,22 @@ const StyledYouTube = styled(SocialYoutubeCircular)`
   }
 `;
 
-
 const Text = styled.p`
   font-size: 15px;
   padding: 0 10px;
   margin-bottom: 0;
   display: flex;
-  text-align: center; 
+  text-align: center;
   @media (max-width: 1000px) {
-    padding: 3px 0; 
+    padding: 3px 0;
+  }
 `;
 
 const InfoContainer = styled(SocialNetContainer)`
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
-
 
 const Link = styled(SMLink)`
   font-size: 12px;
@@ -132,12 +127,10 @@ const Link = styled(SMLink)`
 `;
 
 const Footer = () => {
-
-
   return (
     <StyledFooter>
       <SocialNetContainer>
-      <SocialStyledContainer>
+        <SocialStyledContainer>
           <SMLink target="_blank" href="https://www.facebook.com/mujeres2000">
             <StyledFacebook />
           </SMLink>
@@ -153,8 +146,8 @@ const Footer = () => {
           >
             <StyledLinkedin />
           </SMLink>
-          </SocialStyledContainer>
-          <SocialStyledContainer>
+        </SocialStyledContainer>
+        <SocialStyledContainer>
           <SMLink
             target="_blank"
             href="https://www.youtube.com/channel/UCSmaRNbXOXucP1UQ6G-dkng"
@@ -165,17 +158,16 @@ const Footer = () => {
             <StyledMail />
           </SMLink>
 
-
-          <SMLink
-            target="_blank"
-            href="https://vimeo.com/mujeres2000"
-          >
+          <SMLink target="_blank" href="https://vimeo.com/mujeres2000">
             <StyledVimeo />
           </SMLink>
-          <SMLink target="_blank" href="tel: +549111557094754">
+          <SMLink
+            target="_blank"
+            href="https://api.whatsapp.com/send?phone=5491157094754"
+          >
             <StyledWhatsapp />
           </SMLink>
-          </SocialStyledContainer>
+        </SocialStyledContainer>
       </SocialNetContainer>
 
       <InfoContainer>

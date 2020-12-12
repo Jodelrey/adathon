@@ -1,11 +1,7 @@
 import React from "react";
 
 const Link = ({ children, ...props }) => {
-  return (
-    <a {...props} tabindex="0">
-      {children}
-    </a>
-  );
+  return <a {...props}>{children}</a>;
 };
 
 export default Link;

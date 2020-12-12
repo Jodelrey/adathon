@@ -1,9 +1,9 @@
-import {Container} from "./components/primitive"
+import { Container } from "./components/primitive";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import Graphic from "./components/Graphic"
-import NavMenu from "./components/NavMenu"
-import Footer from "./components/Footer"
+import NavMenu from "./components/NavMenu";
+import Footer from "./components/Footer";
+import Login from "./pages/Login";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -25,39 +25,27 @@ body {
   } */
 }`;
 
-
 function App() {
-  return <Container className="App">
-   <Router>
+  return (
+    <Container className="App">
+      <Router>
         <GlobalStyle />
         <NavMenu />
-
         <Switch>
           <Route exact path="/">
-      
+            <Login />
           </Route>
-          <Route exact path="/Nosotros">
-      
-          </Route>
-          <Route exact path="/Productos">
-           
-          </Route>
-          <Route exact path="/Reparto">
-         
-          </Route>
-          <Route exact path="/Contacto">
-         
-          </Route>
-          <Route>
-           
-          </Route>
+          <Route exact path="/Nosotros"></Route>
+          <Route exact path="/Productos"></Route>
+          <Route exact path="/Reparto"></Route>
+          <Route exact path="/Contacto"></Route>
+          <Route></Route>
         </Switch>
-
-  
       </Router>
 
       <Footer />
-  </Container>;
+    </Container>
+  );
 }
 
 export default App;
