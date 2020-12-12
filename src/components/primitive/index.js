@@ -7,10 +7,11 @@ import Label from "./Label"
 import Link from "./Link"
 import List from "./List"
 import ListItem from "./ListItem"
+import Nav from "./Nav"
 import Option from "./Option"
 import Select from "./Select"
 import Span from "./Span"
 import Text from "./Text"
 
 
-export {Button, Container, Heading, Image, Input, Label, Link, List, ListItem, Option, Select, Span, Text}
+export {Button, Container, Heading, Image, Input, Label, Link, List, ListItem, Nav, Option, Select, Span, Text}

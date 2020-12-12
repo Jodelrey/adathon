@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import { AsideProvider } from "./context/AsideContext";
 import App from "./App";
 // import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AsideProvider>
+      <App />
+    </AsideProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
