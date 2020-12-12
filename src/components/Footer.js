@@ -120,6 +120,10 @@ const Text = styled.p`
   @media(max-width: 800px) {
    text-align: center; 
   }
+
+  @media(max-width: 500px) {
+   font-size: 13px; 
+  }
  
 `;
 
@@ -131,6 +135,10 @@ const InfoContainer = styled(SocialNetContainer)`
   
   @media(max-width: 800px) {
     align-items: center; 
+  }
+
+  @media(max-width: 500px) {
+   height: 60px; 
   }
 `;
 
