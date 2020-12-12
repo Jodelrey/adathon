@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import {Link} from "../components/primitive/"
+import { Link } from "../components/primitive/";
 import { NavLink } from "react-router-dom";
 import logo from "../img/logo_top.gif";
 import { Menu } from "@styled-icons/ionicons-solid/Menu";
@@ -34,21 +34,12 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 35px;
+  height: 70px;
   @media (max-width: 320px) {
     height: 25px;
   }
 `;
 
-const Text = styled.h1`
-  font-size: 15px;
-  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
-  padding: 0 10px;
-  margin: 0;
-  @media (max-width: 320px) {
-    line-height: 25px;
-  }
-`;
 
 const ResponsiveNav = styled.div`
   display: flex;
@@ -59,10 +50,54 @@ const ResponsiveNav = styled.div`
     display: none;
   }
 `;
-const StyledLink = styled(NavLink)`
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+
+const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
+  outline: none; 
+  cursor: pointer; 
+  color: #f7f6e7;
+  text-decoration: none;
+  transition: 0.3s;
+  padding: 15px;
+  font-size: 15px;
+  width: 220px;
+  text-align: center;
+
+    &:hover {
+      text-decoration: none;
+      color: #b8b0b0;
+      transition: 0.3s;
+    }
+    &:active {
+      text-decoration: none;
+      color: #f7f6e7;
+    }
+    &.selected {
+      background-color: rgb(125, 48, 134);
+    }
+
+    @media (max-width: 1120px) {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+    @media (max-width: 450px) {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+`;
+const StyledNavLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
   color: #f7f6e7;
   text-decoration: none;
@@ -71,34 +106,34 @@ const StyledLink = styled(NavLink)`
   font-size: 15px;
   width: 220px;
   text-align: center;
-  @media (max-width: 1120px) {
-    font-size: 20px;
-    /* width: 150px; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  /* @media (max-width: 900px) {
-    width: 120px;
-  } */
-  @media (max-width: 450px) {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  &:hover {
-    text-decoration: none;
-    color: #b8b0b0;
-    transition: 0.3s;
-  }
-  &:active {
-    text-decoration: none;
-    color: #f7f6e7;
-  }
-  &.selected {
-    background-color: rgb(125,48,134);
-  }
+
+    &:hover {
+      text-decoration: none;
+      color: #b8b0b0;
+      transition: 0.3s;
+    }
+    &:active {
+      text-decoration: none;
+      color: #f7f6e7;
+    }
+    &.selected {
+      background-color: rgb(125, 48, 134);
+    }
+
+    @media (max-width: 1120px) {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 450px) {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
 `;
 
 const DropdownMenu = styled.div`
@@ -128,24 +163,22 @@ const NavMenu = () => {
       </Container>
 
       <ResponsiveNav>
-        <StyledLink exact activeClassName="selected" to="/">
+        <StyledNavLink exact activeClassName="selected" to="/">
           Inicio
-        </StyledLink>
-        <StyledLink exact activeClassName="selected" to="/Ventas">
+        </StyledNavLink>
+        <StyledNavLink exact activeClassName="selected" to="/Ventas">
           Ventas
-        </StyledLink>
-        <StyledLink exact activeClassName="selected" to="/Productos">
+        </StyledNavLink>
+        <StyledNavLink exact activeClassName="selected" to="/Productos">
           Productos
-        </StyledLink>
-        <StyledLink exact activeClassName="selected" to="/Costos">
+        </StyledNavLink>
+        <StyledNavLink exact activeClassName="selected" to="/Costos">
           Costos
-        </StyledLink>
-        <StyledLink exact activeClassName="selected" to="/Informes">
+        </StyledNavLink>
+        <StyledNavLink exact activeClassName="selected" to="/Informes">
           Informes
-        </StyledLink>
-        <Link>
-          Cerrar sesión
-        </Link>
+        </StyledNavLink>
+        <StyledLink>Cerrar sesión</StyledLink>
       </ResponsiveNav>
 
       <DropdownMenu>
