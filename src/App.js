@@ -34,7 +34,7 @@ function App() {
         <NavMenu />
         <Switch>
           <Route exact path="/">
-            <Login />
+            <Register />
           </Route>
           <Route exact path="/Nosotros"></Route>
           <Route exact path="/Productos"></Route>

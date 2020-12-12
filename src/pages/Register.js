@@ -14,19 +14,20 @@ const StyledContainer = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #89beb3;
+  background-color: #707070;
 `;
 
 const StyledForm = styled.form`
-  margin-top: 30px;
+  margin: 30px 0;
   width: 40%;
   height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 3em;
+  padding: 2em;
   border-radius: 3em;
   backdrop-filter: blur(40px);
   border: solid 2px transparent;
@@ -36,6 +37,9 @@ const StyledForm = styled.form`
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   @media (max-width: 800px) {
     width: 80%;
+  }
+  @media (max-width: 500px) {
+    width: 70%;
   }
 `;
 
@@ -57,7 +61,7 @@ const StyledInput = styled(Input)`
 const StyledLabel = styled(Label)`
   font-size: 15px;
   width: 100%;
-  color: #555555;
+  color: white;
   display: flex;
   font-weight: 600;
   align-items: flex-start;
@@ -68,7 +72,7 @@ const StyledLabel = styled(Label)`
 const StyledHeading = styled.h1`
   font-size: 40px;
   font-weight: 400;
-  color: #555555;
+  color: white;
   margin-top: 30px;
   font-weight: 600;
   @media (max-width: 600px) {
@@ -101,9 +105,10 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledText = styled(Text)`
-  color: #555555;
+  color: white;
   font-size: 15px;
-  margin: 20px 0;
+  margin-bottom: 10px;
+  font-weight: 500;
   @media (max-width: 600px) {
     font-size: 12px;
   }
@@ -169,11 +174,11 @@ const Register = () => {
             <StyledInput type="password" name="password" />
           </StyledLabel>
           <StyledButton type="submit">Registrese</StyledButton>
+          <StyledText>
+            Si ya esta registrada haga click
+            <StyledLink to="/signup"> aquí </StyledLink>
+          </StyledText>
         </StyledForm>
-        <StyledText>
-          Si ya esta registrada haga click
-          <StyledLink to="/signup"> aquí </StyledLink>
-        </StyledText>
       </StyledContainer>
     </>
   );

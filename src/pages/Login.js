@@ -8,21 +8,19 @@ import { Container, Input, Label, Button, Text } from "../components/primitive";
 
 const StyledContainer = styled(Container)`
   width: 100%;
-  min-height: calc(100vh - 120px);
+  //min-height: calc(100vh - 120px);
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: 1000px) {
-    min-height: calc(100vh - 180px);
-  }
 `;
 
 const StyledForm = styled.form`
   width: 40%;
   height: 250px;
   display: flex;
+  margin-top: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -82,7 +80,6 @@ const StyledButton = styled(Button)`
   height: 40px;
   outline: none;
   border: none;
-  margin-top: 20px;
   background-color: #ff9600;
   color: white;
   font-weight: 600;
@@ -102,7 +99,8 @@ const StyledButton = styled(Button)`
 const StyledText = styled(Text)`
   color: #555555;
   font-size: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+
   @media (max-width: 600px) {
     font-size: 12px;
   }
@@ -113,7 +111,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   transition: 0.3s;
   font-weight: 600;
-
   &:hover {
     transition: 0.3s;
     color: #0e918c;
