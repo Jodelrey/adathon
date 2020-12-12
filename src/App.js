@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Graphic from "./components/Graphic"
 import NavMenu from "./components/NavMenu"
+import Footer from "./components/Footer"
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -55,7 +56,7 @@ function App() {
   
       </Router>
 
-
+      <Footer />
   </Container>;
 }
 

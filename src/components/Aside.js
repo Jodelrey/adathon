@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
+import { Link } from "../components/primitive";
 import { NavLink } from "react-router-dom";
 import AsideContext from "../context/AsideContext";
 import { fadeInLeft } from "react-animations";
@@ -22,10 +23,9 @@ const DropdownList = styled.ul`
   display: flex;
   flex-direction: column;
   list-style: none;
-  background-color: #2a363b;
+  background-color: rgb(125, 48, 134);
   position: absolute;
   padding-top: 25px;
-  position: relative;
   left: 0;
   width: 220px;
   margin: 0;
@@ -37,18 +37,53 @@ const DropdownItem = styled.li`
   display: flex;
 `;
 
-const StyledLink = styled(NavLink)`
+const StyledLink = styled(Link)`
+ font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
+  color: #f7f6e7;
+  text-decoration: none;
+  transition: 0.3s;
+  padding: 15px;
+  font-size: 20px;
+  width: 220px;
+  height: 100%;
+
+  @media (max-width: 1120px) {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 450px) {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &:hover {
+    text-decoration: none;
+    color: #b8b0b0;
+    transition: 0.3s;
+  }
+  &:active {
+    text-decoration: none;
+    color: #f7f6e7;
+  }
+  &.selected {
+    background-color: #3f4a4e;
+  }`;
+
+const StyledNavLink = styled(NavLink)`
   font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
   color: #f7f6e7;
   text-decoration: none;
   transition: 0.3s;
   padding: 15px;
-  font-size: 25px;
+  font-size: 20px;
   width: 220px;
   height: 100%;
-  text-align: center;
+
   @media (max-width: 1120px) {
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,40 +145,43 @@ const Aside = () => {
       );
   }, [show]);
 
-  return ( show &&
-    <Container show={show}>
-      
+  return (
+    show && (
+      <Container show={show}>
         <FadeLeftDiv show={show}>
           <DropdownList onClick={handleMenuClick} show={show}>
             <DropdownItem>
-              <StyledLink exact activeClassName="selected" to="/">
+              <StyledNavLink exact activeClassName="selected" to="/">
                 Inicio
-              </StyledLink>
+              </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-              <StyledLink exact activeClassName="selected" to="/Nosotros">
-                Nosotros
-              </StyledLink>
+              <StyledNavLink exact activeClassName="selected" to="/Nosotros">
+                Ventas
+              </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-              <StyledLink exact activeClassName="selected" to="/Productos">
+              <StyledNavLink exact activeClassName="selected" to="/Productos">
                 Productos
-              </StyledLink>
+              </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-              <StyledLink exact activeClassName="selected" to="/Reparto">
-                Reparto
-              </StyledLink>
+              <StyledNavLink exact activeClassName="selected" to="/Reparto">
+                Costos
+              </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-              <StyledLink exact activeClassName="selected" to="/Contacto">
-                Contacto
-              </StyledLink>
+              <StyledNavLink exact activeClassName="selected" to="/Contacto">
+                Informes
+              </StyledNavLink>
+            </DropdownItem>
+            <DropdownItem>
+              <StyledLink>Cerrar sesión</StyledLink>
             </DropdownItem>
           </DropdownList>
         </FadeLeftDiv>
-      
-    </Container>
+      </Container>
+    )
   );
 };
 
