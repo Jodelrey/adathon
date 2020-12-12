@@ -10,32 +10,44 @@ import { Whatsapp } from "@styled-icons/remix-fill/Whatsapp";
 import { MailWithCircle } from "@styled-icons/entypo-social/MailWithCircle";
 
 const StyledFooter = styled.footer`
-  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
-  height: 110px;
-  padding: 20px 0;
+  box-sizing: border-box;
+  height: 150px;
+  padding: 20px 80px;
   background-color: rgb(125, 48, 134);
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   z-index: 300;
 
-  @media (max-width: 1000px) {
-    height: 170px;
+  @media(max-width: 950px){
+    padding: 20px 20px;
   }
+
+  @media(max-width: 800px) {
+    height: 200px; 
+    flex-direction: column-reverse; 
+  }
+
 `;
 
 const SocialNetContainer = styled.div`
   display: flex;
-  width: 60%;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
+  height: 75px;
 
-  @media (max-width: 1000px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  width: 50%;
+
+  @media(max-width: 800px) {
+    align-items: center; 
+    padding: 5px; 
+    width: 70%;
+  }
+
+  @media (max-width: 600px) {
+    width: 90%;
   }
 `;
 
@@ -47,13 +59,12 @@ const SocialStyledContainer = styled.div`
     height: 40px;
   }
   @media (max-width: 800px) {
-    width: 60%;
+    width: 100%;
   }
 `;
 
 const SMLink = styled.a`
   cursor: pointer;
-  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
   color: #f7f6e7;
   font-size: 15px;
   text-decoration: none;
@@ -98,27 +109,29 @@ const StyledVimeo = styled(VimeoWithCircle)`
 const StyledYouTube = styled(SocialYoutubeCircular)`
   height: 37px;
   margin-top: -2px;
-
-  @media (max-width: 1000px) {
-    margin-left: -3px;
-  }
+  margin-left: -4px;
 `;
 
 const Text = styled.p`
   font-size: 15px;
-  padding: 0 10px;
   margin-bottom: 0;
   display: flex;
-  text-align: center;
-  @media (max-width: 1000px) {
-    padding: 3px 0;
+
+  @media(max-width: 800px) {
+   text-align: center; 
   }
+ 
 `;
 
 const InfoContainer = styled(SocialNetContainer)`
-  justify-content: center;
+  height: 75px;
+  justify-content: space-between;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  
+  @media(max-width: 800px) {
+    align-items: center; 
+  }
 `;
 
 const Link = styled(SMLink)`
@@ -129,6 +142,12 @@ const Link = styled(SMLink)`
 const Footer = () => {
   return (
     <StyledFooter>
+      <InfoContainer>
+        <Text>Malabia 2106, piso 3"C" Capital Federal, Argentina</Text>
+        <Text>Tel: (011)15-5709-4754</Text>
+        <Text>info@mujeres2000.org.ar</Text>
+      </InfoContainer>
+
       <SocialNetContainer>
         <SocialStyledContainer>
           <SMLink target="_blank" href="https://www.facebook.com/mujeres2000">
@@ -169,12 +188,6 @@ const Footer = () => {
           </SMLink>
         </SocialStyledContainer>
       </SocialNetContainer>
-
-      <InfoContainer>
-        <Text>Malabia 2106, piso 3"C" Capital Federal, Argentina</Text>
-        <Text>Tel: (011)15-5709-4754</Text>
-        <Text>info@mujeres2000.org.ar</Text>
-      </InfoContainer>
     </StyledFooter>
   );
 };
