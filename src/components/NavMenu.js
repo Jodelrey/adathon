@@ -34,7 +34,8 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 70px;
+height: 60px;
+margin-left: 15px;
   @media (max-width: 320px) {
     height: 25px;
   }
@@ -55,7 +56,6 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
   outline: none; 
   cursor: pointer; 
   color: #f7f6e7;
@@ -63,6 +63,7 @@ const StyledLink = styled(Link)`
   transition: 0.3s;
   padding: 15px;
   font-size: 15px;
+  font-weight: 500;
   width: 220px;
   text-align: center;
 
@@ -80,7 +81,6 @@ const StyledLink = styled(Link)`
     }
 
     @media (max-width: 1120px) {
-    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,7 +98,6 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
   color: #f7f6e7;
   text-decoration: none;
   transition: 0.3s;
@@ -121,7 +120,7 @@ const StyledNavLink = styled(NavLink)`
     }
 
     @media (max-width: 1120px) {
-      font-size: 20px;
+      font-size: 15px;
       display: flex;
       align-items: center;
       justify-content: center;

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import NavMenu from "./components/NavMenu";
 import Footer from "./components/Footer";
-import Login from "./pages/Login";
+import Home from "./pages/Home";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
 }
 body {
-  font-family: 'Nunito', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column; 
   background-color: #FFFFFF;
@@ -33,7 +33,7 @@ function App() {
         <NavMenu />
         <Switch>
           <Route exact path="/">
-            <Login />
+            <Home /> 
           </Route>
           <Route exact path="/Nosotros"></Route>
           <Route exact path="/Productos"></Route>

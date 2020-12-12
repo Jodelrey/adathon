@@ -1,10 +1,10 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 const Graphic = () => {
   return (
-    <div>
-      <Bar
+    <div style= {{position: 'relative', height:'40vh', width:'50%'}}>
+      <Line
         data={{
           labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
           datasets: [
