@@ -14,7 +14,7 @@ const StyledContainer = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #707070;
+  background-color: #435055;
 `;
 
 const StyledForm = styled.form`
