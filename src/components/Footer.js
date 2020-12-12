@@ -20,6 +20,10 @@ const StyledFooter = styled.footer`
   align-items: center;
   z-index: 300;
 
+  @media (max-width: 1050px) {
+     padding: 0 70px; 
+    }
+
   @media(max-width: 950px){
     padding: 20px 20px;
   }

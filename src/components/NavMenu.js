@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Link } from "../components/primitive/";
 import { NavLink } from "react-router-dom";
 import logo from "../img/logo_top.gif";
 import { Menu } from "@styled-icons/ionicons-solid/Menu";
@@ -10,10 +9,20 @@ import AsideContext from "../context/AsideContext";
 const StyledNav = styled.nav`
   width: 100%;
   height: 70px;
+  padding: 0 80px; 
+  box-sizing: border-box;
   background-color: #8c1886;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  @media (max-width: 1050px) {
+     padding: 0 40px; 
+    }
+
+  @media (max-width: 900px) {
+    padding: 5px; 
+  }
 `;
 
 const Container = styled.div`
@@ -51,65 +60,22 @@ const ResponsiveNav = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
-  outline: none; 
-  cursor: pointer; 
-  color: #f7f6e7;
-  text-decoration: none;
-  transition: 0.3s;
-  padding: 15px;
-  font-size: 15px;
-  width: 220px;
-  text-align: center;
 
-    &:hover {
-      text-decoration: none;
-      color: #b8b0b0;
-      transition: 0.3s;
-    }
-    &:active {
-      text-decoration: none;
-      color: #f7f6e7;
-    }
-    &.selected {
-      background-color: rgb(125, 48, 134);
-    }
-
-    @media (max-width: 1120px) {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-    @media (max-width: 450px) {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-`;
 const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
   color: #f7f6e7;
   text-decoration: none;
   transition: 0.3s;
   padding: 15px;
   font-size: 15px;
-  width: 220px;
+  width: 200px;
   text-align: center;
 
     &:hover {
       text-decoration: none;
-      color: #b8b0b0;
+      color: #ff9600;
       transition: 0.3s;
     }
     &:active {
@@ -120,11 +86,13 @@ const StyledNavLink = styled(NavLink)`
       background-color: rgb(125, 48, 134);
     }
 
-    @media (max-width: 1120px) {
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+   
+    @media (max-width: 1200px) {
+      width: 75px; 
+  }
+
+  @media (max-width: 900px) {
+     width: auto;
     }
 
     @media (max-width: 450px) {
@@ -158,9 +126,9 @@ const NavMenu = () => {
 
   return (
     <StyledNav>
-      <Container>
+
         <Image src={logo} />
-      </Container>
+   
 
       <ResponsiveNav>
         <StyledNavLink exact activeClassName="selected" to="/">
@@ -178,7 +146,9 @@ const NavMenu = () => {
         <StyledNavLink exact activeClassName="selected" to="/Informes">
           Informes
         </StyledNavLink>
-        <StyledLink>Cerrar sesión</StyledLink>
+        <StyledNavLink exact activeClassName="selected" to="/MiCuenta">
+          Mi cuenta
+        </StyledNavLink>
       </ResponsiveNav>
 
       <DropdownMenu>
