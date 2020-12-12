@@ -20,13 +20,14 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledForm = styled.form`
-  width: 30%;
-  height: 250px;
+  margin-top: 30px;
+  width: 40%;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     width: 80%;
   }
 `;
@@ -39,29 +40,22 @@ const StyledInput = styled(Input)`
   border: none;
   background-color: #aaaaaa;
   outline: none;
-  width: 350px;
+  width: 100%;
   padding: 10px;
   font-size: 15px;
   color: white;
   font-weight: 600;
-  margin-left: 20px;
-  @media (max-width: 600px) {
-    width: 80%;
-    margin-left: 0;
-  }
 `;
 
 const StyledLabel = styled(Label)`
-  font-size: 20px;
+  font-size: 15px;
   width: 100%;
   color: #555555;
   display: flex;
   font-weight: 600;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   justify-content: space-between;
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
 `;
 
 const StyledHeading = styled.h1`
@@ -70,6 +64,9 @@ const StyledHeading = styled.h1`
   color: #8c1886;
   margin-top: 30px;
   font-weight: 600;
+  @media (max-width: 600px) {
+    font-size: 25px;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -102,6 +99,7 @@ const StyledText = styled(Text)`
   margin-bottom: 20px;
   @media (max-width: 600px) {
     font-size: 12px;
+    margin-top: 10px;
   }
 `;
 
@@ -117,7 +115,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Login = () => {
+const Register = () => {
   //   const [error, setError] = useState(false);
   //   const [modal, setModal] = useState(false);
   //   const history = useHistory();
@@ -150,7 +148,7 @@ const Login = () => {
   return (
     <>
       <StyledContainer>
-        <StyledHeading>Bienvenida</StyledHeading>
+        <StyledHeading>Registrarse</StyledHeading>
         <StyledForm>
           <StyledLabel>
             Email
@@ -160,15 +158,14 @@ const Login = () => {
             Contraseña
             <StyledInput type="password" name="password" />
           </StyledLabel>
-          <StyledText>
-            Si olvido su contraseña haga click
-            <StyledLink to="/signup"> aquí </StyledLink>
-          </StyledText>
-
-          <StyledButton type="submit">Ingresar</StyledButton>
+          <StyledLabel>
+            Confirme la contraseña
+            <StyledInput type="password" name="password" />
+          </StyledLabel>
+          <StyledButton type="submit">Registrese</StyledButton>
         </StyledForm>
         <StyledText>
-          Si no esta registrada hagalo
+          Si ya esta registrada haga click
           <StyledLink to="/signup"> aquí </StyledLink>
         </StyledText>
       </StyledContainer>
@@ -176,4 +173,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
