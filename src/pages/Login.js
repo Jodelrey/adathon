@@ -52,10 +52,10 @@ const StyledInput = styled(Input)`
 const StyledLabel = styled(Label)`
   font-size: 20px;
   transition: 0.3s ease-in;
-  @include flex(column, space-between, flex-start);
-  &:focus {
-    background-color: $background-aside-darkmode;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aling-items: flex-start;
 
   @include media($lg-breakpoint) {
     @include flex(column, space-evenly, center);
