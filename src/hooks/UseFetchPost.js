@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ApiCall from "../utils/ApiCall";
 
 const useFetchPost = (path, method, data, dependenciesArray) => {
-  const [data, setData] = useState(null);
+  const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
 
   const request = { method: method, body: JSON.stringify(data) };
@@ -18,7 +18,7 @@ const useFetchPost = (path, method, data, dependenciesArray) => {
         }
       })
       .then((data) => {
-        setData(data);
+        setUserData(data);
       })
       .catch((error) => setError(error));
   }, dependenciesArray);
