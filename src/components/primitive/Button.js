@@ -1,10 +1,9 @@
 import React from "react";
 
-const Button = ({ children, forwardedRef, ...props }) => {
+const Button = ({ children, ...props }) => {
 
   return (
     <button
-      ref={forwardedRef}
       tabindex="0"
       {...props}
     >
@@ -13,6 +12,5 @@ const Button = ({ children, forwardedRef, ...props }) => {
   );
 };
 
-const forwardedButton = React.forwardRef(Button);
 
-export default forwardedButton;
+export default Button;
