@@ -20,7 +20,7 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledForm = styled.form`
-  width: 30%;
+  width: 40%;
   height: 250px;
   display: flex;
   flex-direction: column;
@@ -70,6 +70,9 @@ const StyledHeading = styled.h1`
   color: #8c1886;
   margin-top: 30px;
   font-weight: 600;
+  @media (max-width: 600px) {
+    font-size: 25px;
+  }
 `;
 
 const StyledButton = styled(Button)`

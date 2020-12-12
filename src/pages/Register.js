@@ -8,15 +8,13 @@ import { Container, Input, Label, Button, Text } from "../components/primitive";
 
 const StyledContainer = styled(Container)`
   width: 100%;
-  min-height: calc(100vh - 120px);
+  //min-height: calc(100vh - 120px);
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: 1000px) {
-    min-height: calc(100vh - 180px);
-  }
+  background-color: #89beb3;
 `;
 
 const StyledForm = styled.form`
@@ -27,6 +25,15 @@ const StyledForm = styled.form`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 3em;
+  border-radius: 3em;
+  backdrop-filter: blur(40px);
+  border: solid 2px transparent;
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
   @media (max-width: 800px) {
     width: 80%;
   }
@@ -61,7 +68,7 @@ const StyledLabel = styled(Label)`
 const StyledHeading = styled.h1`
   font-size: 40px;
   font-weight: 400;
-  color: #8c1886;
+  color: #555555;
   margin-top: 30px;
   font-weight: 600;
   @media (max-width: 600px) {
@@ -96,22 +103,21 @@ const StyledButton = styled(Button)`
 const StyledText = styled(Text)`
   color: #555555;
   font-size: 15px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   @media (max-width: 600px) {
     font-size: 12px;
-    margin-top: 10px;
   }
 `;
 
 const StyledLink = styled(Link)`
-  color: rgb(0, 192, 210);
+  color: #8c1886;
   text-decoration: none;
   transition: 0.3s;
   font-weight: 600;
 
   &:hover {
     transition: 0.3s;
-    color: #0e918c;
+    color: rgb(125, 48, 134);
   }
 `;
 
