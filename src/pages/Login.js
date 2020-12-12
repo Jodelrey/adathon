@@ -7,7 +7,7 @@ import { Container, Input, Label, Button, Text } from "../components/primitive";
 //import UserContext from "../contexts/UserContext";
 
 const StyledContainer = styled(Container)`
-  width: 100vw;
+  width: 100%;
   min-height: calc(100vh - 120px);
   height: 100%;
   display: flex;
@@ -15,109 +15,105 @@ const StyledContainer = styled(Container)`
   align-items: center;
   justify-content: space-between;
   @media (max-width: 1000px) {
-    min-height: calc(100vh - 300px);
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    min-height: calc(100vh - 180px);
+  }
+`;
+
+const StyledForm = styled.form`
+  width: 30%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 600px) {
+    width: 80%;
   }
 `;
 
 const StyledInput = styled(Input)`
   margin: 10px 0;
-  line-height: 15px;
+  line-height: 20px;
   box-sizing: border-box;
   border-radius: 5px;
   border: none;
+  background-color: #aaaaaa;
   outline: none;
-  width: 300px;
-  transition: 0.3s ease-in;
+  width: 350px;
   padding: 10px;
   font-size: 15px;
-
-  @include media($lg-breakpoint) {
-    width: 60%;
-    margin-left: 0;
-  }
-
-  @include media($md-breakpoint) {
-    width: 70%;
+  color: white;
+  font-weight: 600;
+  margin-left: 20px;
+  @media (max-width: 600px) {
+    width: 80%;
     margin-left: 0;
   }
 `;
 
 const StyledLabel = styled(Label)`
   font-size: 20px;
-  transition: 0.3s ease-in;
+  width: 100%;
+  color: #555555;
   display: flex;
-  flex-direction: column;
+  font-weight: 600;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  @include media($lg-breakpoint) {
-    @include flex(column, space-evenly, center);
-    width: 80%;
-    height: 80px;
-  }
-
-  @include media($md-breakpoint) {
-    @include flex(column, space-evenly, center);
-    width: 100%;
-    height: 80px;
+  @media (max-width: 600px) {
+    flex-direction: column;
   }
 `;
 
 const StyledHeading = styled.h1`
   font-size: 40px;
   font-weight: 400;
-  color: "#8c1886";
-`;
-
-const StyledForm = styled.form`
-  width: 80%;
-  height: 250px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-space-between;
-  align-items: center;
-
-  @include media($md-breakpoint) {
-    min-height: 260px;
-    height: 100%;
-    width: 100%;
-  }
+  color: #8c1886;
+  margin-top: 30px;
+  font-weight: 600;
 `;
 
 const StyledButton = styled(Button)`
   margin-right: 0;
   width: 300px;
+  border-radius: 8px;
+  height: 40px;
+  outline: none;
+  border: none;
+  margin-top: 20px;
+  background-color: #ff9600;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s easy-in;
+  cursor: pointer;
+  &:hover {
+    background-color: #fd8c04;
+    transition: 0.3s easy-in;
+  }
 
-  @include media($md-breakpoint) {
-    width: 70%;
+  @media (max-width: 600px) {
+    width: 80%;
   }
 `;
 
 const StyledText = styled(Text)`
-  color: #fff;
+  color: #555555;
   font-size: 17px;
-  transition: 0.3s;
-
-  @include media($lg-breakpoint) {
-    padding-top: 30px;
+  margin-bottom: 20px;
+  @media (max-width: 600px) {
+    font-size: 12px;
   }
 `;
 
 const StyledLink = styled(Link)`
-  color: #fff;
+  color: rgb(0, 192, 210);
   text-decoration: none;
   transition: 0.3s;
   font-weight: 700;
 
   &:hover {
-    color: #fff;
     transition: 0.3s;
+    color: #0e918c;
   }
 `;
 
@@ -158,9 +154,9 @@ const Login = () => {
         <StyledForm>
           <StyledLabel>
             Email
-            <Input type="email" name="email" />
+            <StyledInput type="email" name="email" />
           </StyledLabel>
-          <StyledLabel className={`form-label`}>
+          <StyledLabel>
             Password
             <StyledInput type="password" name="password" />
           </StyledLabel>
