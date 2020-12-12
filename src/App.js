@@ -1,10 +1,10 @@
-import Container from "./components/primitive"
+import {Container} from "./components/primitive"
 
 
 function App() {
   return <Container className="App">
 
-    
+
   </Container>;
 }
 
