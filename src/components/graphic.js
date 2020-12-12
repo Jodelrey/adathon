@@ -1,7 +1,7 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
-const graphic = () => {
+const Graphic = () => {
   return (
     <div>
       <Bar
@@ -56,4 +56,4 @@ const graphic = () => {
   );
 };
 
-export default graphic;
+export default Graphic;
