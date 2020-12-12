@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import UserContext from "../context/UserContext";
 import { Container, Input, Label, Button, Text } from "../components/primitive";
 
 //import UserContext from "../contexts/UserContext";
@@ -118,6 +118,12 @@ const StyledLink = styled(Link)`
 `;
 
 const Login = () => {
+  const {
+    loginUser,
+    setLoginUser,
+    loginPassword,
+    setLoginPassword,
+  } = useContext(UserContext);
   //   const [error, setError] = useState(false);
   //   const [modal, setModal] = useState(false);
   //   const history = useHistory();
