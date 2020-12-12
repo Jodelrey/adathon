@@ -7,15 +7,14 @@ import { Container, Input, Label, Button, Text } from "../components/primitive";
 //import UserContext from "../contexts/UserContext";
 
 const StyledContainer = styled(Container)`
-  width: calc(100vw - 100px);
-  min-height: calc(100vh - 300px);
+  width: 100vw;
+  min-height: calc(100vh - 120px);
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  @media (max-widtj: 1000px) {
+  @media (max-width: 1000px) {
     min-height: calc(100vh - 300px);
     height: 100%;
     width: 100%;
@@ -55,8 +54,7 @@ const StyledLabel = styled(Label)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  aling-items: flex-start;
-
+  align-items: flex-start;
   @include media($lg-breakpoint) {
     @include flex(column, space-evenly, center);
     width: 80%;
@@ -73,14 +71,17 @@ const StyledLabel = styled(Label)`
 const StyledHeading = styled.h1`
   font-size: 40px;
   font-weight: 400;
-  color: #8c1886;
+  color: "#8c1886";
 `;
 
 const StyledForm = styled.form`
   width: 80%;
   height: 250px;
   text-align: center;
-  @include flex(column, space-between, center);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-space-between;
+  align-items: center;
 
   @include media($md-breakpoint) {
     min-height: 260px;
@@ -152,31 +153,22 @@ const Login = () => {
 
   return (
     <>
-      (
-      <StyledContainer className={`form-container`}>
+      <StyledContainer>
         <StyledHeading>Bienvenida</StyledHeading>
-
-        <StyledForm action="" className={`form`}>
-          <StyledLabel className={`form-label`}>
+        <StyledForm>
+          <StyledLabel>
             Email
-            <Input type="email" name="email" className={`form-input`} />
+            <Input type="email" name="email" />
           </StyledLabel>
           <StyledLabel className={`form-label`}>
             Password
-            <StyledInput
-              type="password"
-              name="password"
-              className={`form-input`}
-            />
+            <StyledInput type="password" name="password" />
           </StyledLabel>
           <StyledButton type="submit">Sign In</StyledButton>
         </StyledForm>
-        <StyledText className={`form-text`}>
-          If you´re not registered, do it{" "}
-          <StyledLink to="/signup" className={`form-link`}>
-            {" "}
-            here{" "}
-          </StyledLink>
+        <StyledText>
+          If you´re not registered, do it
+          <StyledLink to="/signup"> here </StyledLink>
         </StyledText>
       </StyledContainer>
     </>
