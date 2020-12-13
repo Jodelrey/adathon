@@ -61,7 +61,7 @@ const ResponsiveNav = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,6 +94,7 @@ const StyledLink = styled(Link)`
     align-items: center;
     justify-content: center;
   }
+  `
 
 const StyledNavLink = styled(NavLink)`
   display: flex;

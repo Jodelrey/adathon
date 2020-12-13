@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import NavMenu from "./components/NavMenu";
 import Footer from "./components/Footer";
-<<<<<<< HEAD
 import {
   Costos,
   Error,
@@ -14,9 +13,6 @@ import {
   Productos,
   Ventas,
 } from "./pages";
-=======
-import Home from "./pages/Home";
->>>>>>> feature/home
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -44,7 +40,6 @@ function App() {
         <NavMenu />
         <Switch>
           <Route exact path="/">
-<<<<<<< HEAD
             <Register />
           </Route>
           <Route exact path="/Costos">
@@ -64,9 +59,6 @@ function App() {
           </Route>
           <Route>
             <Error />
-=======
-            <Home /> 
->>>>>>> feature/home
           </Route>
         </Switch>
       </Router>
