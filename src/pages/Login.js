@@ -146,15 +146,16 @@ const Login = () => {
  
   useEffect(() => {
     console.log(loginUser, loginPassword)
+
+    const headers = new Headers({
+      "Content-Type": "application/json",
+  })
+
     fetch(
-      `${ApiCall}/usuario/registrar`,
+      `${ApiCall}/usuario/ingresar`,
       {
-        headers: {
-          'Content-Type': 'application/json',
-          "Accept": "application/json"
-        },
-        mode: "no-cors",
         method: "POST",
+        headers: headers,
         body: JSON.stringify({
           email: loginUser,
           password: loginPassword,
@@ -166,12 +167,8 @@ const Login = () => {
         if (!response.ok) {
           throw new Error(response.error);
         } else {
-          return response.json();
+          setIsLogged(true)
         }
-      })
-      .then((data) => {
-        console.log(data);
-        setIsLogged(true);
       })
       .catch((error) => console.log(error));
 
