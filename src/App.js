@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import NavMenu from "./components/NavMenu";
 import Footer from "./components/Footer";
+<<<<<<< HEAD
 import {
   Costos,
   Error,
@@ -13,6 +14,9 @@ import {
   Productos,
   Ventas,
 } from "./pages";
+=======
+import Home from "./pages/Home";
+>>>>>>> feature/home
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -20,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
 }
 body {
-  font-family: 'Nunito', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column; 
   background-color: #FFFFFF;
@@ -40,6 +44,7 @@ function App() {
         <NavMenu />
         <Switch>
           <Route exact path="/">
+<<<<<<< HEAD
             <Register />
           </Route>
           <Route exact path="/Costos">
@@ -59,6 +64,9 @@ function App() {
           </Route>
           <Route>
             <Error />
+=======
+            <Home /> 
+>>>>>>> feature/home
           </Route>
         </Switch>
       </Router>
