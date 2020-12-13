@@ -169,11 +169,11 @@ const Login = () => {
         <StyledForm method="post" onSubmit={(event) => signIn(event)}>
           <StyledLabel>
             Email
-            <StyledInput type="email" name="email" />
+            <StyledInput type="email" name="email" value={{}} />
           </StyledLabel>
           <StyledLabel>
             Contraseña
-            <StyledInput type="password" name="password" min="6" />
+            <StyledInput type="password" name="password" min="6" value={{}} />
           </StyledLabel>
           <StyledText>
             Si olvido su contraseña haga click

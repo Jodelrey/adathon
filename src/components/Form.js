@@ -125,8 +125,22 @@ const Form = ({
   const { loginUser } = useContext(UserContext);
   const [dataPost, setDataPost] = useState({});
 
-  const add = (event, entity) => {};
 
+
+  const add = (event, entity) => {
+
+  };
+
+  const loginInfo = useFetchPost(
+    "/usuario/login",
+    "POST",
+    {
+      email: loginUser,
+      password: 2,
+    },
+    { Accept: "application/json", "Content-Type": "application/json" },
+    [loginUser ]
+  );
   return (
     <>
       <StyledHeading>{heading}</StyledHeading>
