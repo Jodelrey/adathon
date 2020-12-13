@@ -7,6 +7,7 @@ import {
   Costos,
   Error,
   Informes,
+  Home,
   Login,
   Register,
   MiCuenta,
@@ -40,7 +41,7 @@ function App() {
         <NavMenu />
         <Switch>
           <Route exact path="/">
-            <Register />
+            <Login />
           </Route>
           <Route exact path="/Costos">
             <Costos />

@@ -6,11 +6,13 @@ import MiCuenta from "./MiCuenta";
 import Productos from "./Productos";
 import Ventas from "./Ventas";
 import Register from "./Register";
+import Home from "./Home";
 
 export {
   Costos,
   Error,
   Informes,
+  Home,
   Login,
   Register,
   MiCuenta,

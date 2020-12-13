@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 
 const Graphic = () => {
   return (
-    <div style= {{width:'100%', height: '100%'}}>
+    <div style={{ width: "100%", height: "100%" }}>
       <Line
         data={{
           labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -11,12 +11,8 @@ const Graphic = () => {
             {
               label: "Ventas",
               data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-              ],
-              borderColor: [
-                "rgba(255, 99, 132, 1)",
-              ],
+              backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+              borderColor: ["rgba(255, 99, 132, 1)"],
               borderWidth: 1,
             },
           ],
