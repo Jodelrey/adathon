@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "../components/primitive";
 import Form from "../components/Form";
-import Catalog from "../components/ProductCatalog";
+import Catalog from "../components/Catalog";
 import styled from "styled-components";
 
 const StyledContainer = styled(Container)`
@@ -29,8 +29,9 @@ const Productos = () => {
           delivery={true}
           entity={"producto/crear"}
         />
-      </StyledContainer>
       < Catalog />
+      </StyledContainer>
+      
     </>
   );
 };
