@@ -3,6 +3,7 @@ import ApiCall from "../utils/ApiCall";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../context/UserContext";
+import useLocalStorage from "../hooks/useLocalStorage"
 import useFetch from "../hooks/useFetch";
 import { Container, Input, Label, Button, Text } from "../components/primitive";
 
@@ -130,6 +131,7 @@ const StyledLink = styled(Link)`
 
 const Login = () => {
   const [error, setError] = useState(false);
+  const {saveToLocalStorage} = useLocalStorage()
   const {
     setIsLogged,
     setLoginPassword,
@@ -147,7 +149,6 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log(loginUser, loginPassword);
 
     const headers = new Headers({
       "Content-Type": "application/json",
@@ -168,6 +169,10 @@ const Login = () => {
         } else {
           setIsLogged(true);
           history.push("/");
+          saveToLocalStorage({ 
+            email: loginUser,
+            password: loginPassword
+          })
         }
       })
       .catch((error) => setError(error));
@@ -179,12 +184,13 @@ const Login = () => {
         <StyledContainer>
           <StyledHeading>Bienvenida</StyledHeading>
           <StyledErrorContainer>
-            {/* {error && (
+            {console.log(error)}
+            {error && (
             <StyledError>
               Hay un error en la contraseña o el usuario. Reinténtelo
               nuevamente.
             </StyledError>
-          )} */}
+          )}
           </StyledErrorContainer>
           <StyledForm method="post" onSubmit={(event) => signIn(event)}>
             <StyledLabel>
