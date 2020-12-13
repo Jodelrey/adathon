@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Button } from "./primitive";
 import styled from "styled-components";
-import useFetchGet from "../hooks/useFetchGet";
+//import useFetchGet from "../hooks/useFetchGet";
 
 const StyledProductsContainer = styled(Container)`
   width: 100%;
