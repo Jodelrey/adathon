@@ -44,7 +44,7 @@ const StyledInput = styled(Input)`
   width: 100%;
   padding: 10px;
   font-size: 15px;
-  color: white;
+  color: #555555;
   font-weight: 500;
 `;
 
