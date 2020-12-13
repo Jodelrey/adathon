@@ -59,7 +59,7 @@ const StyledLabel = styled(Label)`
 `;
 
 const StyledHeading = styled.h1`
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 400;
   color: #8c1886;
   margin-top: 30px;
