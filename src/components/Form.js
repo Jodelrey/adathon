@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Input, Label, Button } from "./primitive";
-import useFetch from "../hooks/useFetch";
+import ApiCall from "../utils/ApiCall";
 import UserContext from "../context/UserContext";
 
 const StyledForm = styled.form`
@@ -94,15 +94,15 @@ const StyledButton = styled(Button)`
   }
 `;
 
-// const StyledText = styled(Text)`
-//   color: #555555;
-//   font-size: 15px;
-//   margin-bottom: 10px;
+const StyledText = styled.p`
+  color: #555555;
+  font-size: 15px;
+  margin-bottom: 10px;
 
-//   @media (max-width: 600px) {
-//     font-size: 12px;
-//   }
-// `;
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
+`;
 
 const Form = ({
   heading,
@@ -123,26 +123,66 @@ const Form = ({
   entity,
 }) => {
   const { loginUser } = useContext(UserContext);
-  const [dataPost, setDataPost] = useState({});
+  const [producto, setProducto] = useState();
+  const [descripcion, setDescripcion] = useState();
+  const [costo, setCosto] = useState();
+  const [rentabilidad, setRentabilidad] = useState();
+  const [envio, setEnvio] = useState();
+  const [isCreated, setIsCreated] = useState(false);
+  const [error, setError] = useState(false);
 
-  const add = (event, entity) => {};
-
-  const loginInfo = useFetch(
-    "/usuario/login",
-    "POST",
-    {
-      email: loginUser,
-      password: 2,
+  const ENDPOINT = {
+    "/producto/crear": {
+      producto_nombre: producto,
+      producto_descripcion: descripcion,
+      costo_materia_prima: costo,
+      rentabilidad: rentabilidad,
+      envio: envio,
     },
-    { Accept: "application/json", "Content-Type": "application/json" },
-    [loginUser]
-  );
+  };
 
+  const add = (event) => {
+    event.preventDefault();
+    setProducto(event.target.producto_nombre.value);
+    setDescripcion(event.target.producto_descripcion.value);
+    setCosto(event.target.costo_materia_prima.value);
+    setRentabilidad(event.target.rentabilidad.value);
+    setEnvio(event.target.envio.value);
+  };
+
+  useEffect(() => {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+    });
+
+    fetch(`${ApiCall}${entity}`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        producto_nombre: producto,
+        producto_descripcion: descripcion,
+        costo_materia_prima: costo,
+        rentabilidad: rentabilidad,
+        envio: envio,
+      }),
+    })
+      .then((response) => {
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(response.error);
+        } else {
+          setIsCreated(true);
+          console.log("esta creado");
+        }
+      })
+      .catch((error) => setError(error));
+  }, [entity, producto, descripcion, costo, envio, rentabilidad]);
 
   return (
     <>
       <StyledHeading>{heading}</StyledHeading>
-      <StyledForm>
+      {isCreated && <StyledText>Creado con exito</StyledText>}
+      <StyledForm onSubmit={(event, entity) => add(event, entity)}>
         {product && (
           <StyledLabel>
             Nombre del producto
@@ -258,9 +298,7 @@ const Form = ({
             <StyledInput type="date" name="fecha" />
           </StyledLabel>
         )}
-        <StyledButton onClick={(event, entity) => add(event, entity)}>
-          Agregar
-        </StyledButton>
+        <StyledButton type="submit">Agregar</StyledButton>
       </StyledForm>
     </>
   );

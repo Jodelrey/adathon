@@ -43,14 +43,13 @@ body {
 
 function App() {
   const { isLogged } = useContext(UserContext);
-  
 
   return (
     <>
       <GlobalStyle />
       <Container>
         <Router>
-        <NavMenu />
+          <NavMenu />
           <Switch>
             <Route exact path="/">
               {isLogged ? <Home /> : <Redirect to="/Login" />}
@@ -71,10 +70,10 @@ function App() {
               {isLogged ? <Ventas /> : <Redirect to="/Login" />}
             </Route>
             <Route exact path="/Login">
-            {!isLogged ? <Login /> : <Redirect to="/Login" />}
+              {!isLogged ? <Login /> : <Redirect to="/" />}
             </Route>
             <Route exact path="/Registrarse">
-            {!isLogged ? <Register /> : <Redirect to="/Login" />}
+              {!isLogged ? <Register /> : <Redirect to="/" />}
             </Route>
             <Route>
               <Error />

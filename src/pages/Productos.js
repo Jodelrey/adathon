@@ -24,7 +24,7 @@ const Productos = () => {
           cost={true}
           gain={true}
           delivery={true}
-          entity={"producto/crear"}
+          entity={"/producto/crear"}
         />
       </StyledContainer>
     </>
