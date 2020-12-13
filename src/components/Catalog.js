@@ -51,7 +51,7 @@ const Catalog = () => {
   //   "Content-Type": "application/json",
   // });
   //const data = catalogList.data;
-  console.log(catalogList);
+  //console.log(catalogList);
   const data = [
     {
       producto_id: 2,
