@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: 'Nunito', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column; 
   background-color: #FFFFFF;

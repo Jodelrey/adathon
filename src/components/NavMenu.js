@@ -43,7 +43,8 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 70px;
+height: 60px;
+margin-left: 15px;
   @media (max-width: 320px) {
     height: 25px;
   }
@@ -60,6 +61,40 @@ const ResponsiveNav = styled.div`
   }
 `;
 
+const StyledLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none; 
+  cursor: pointer; 
+  color: #f7f6e7;
+  text-decoration: none;
+  transition: 0.3s;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 500;
+  width: 220px;
+  text-align: center;
+
+    &:hover {
+      text-decoration: none;
+      color: #b8b0b0;
+      transition: 0.3s;
+    }
+    &:active {
+      text-decoration: none;
+      color: #f7f6e7;
+    }
+    &.selected {
+      background-color: rgb(125, 48, 134);
+    }
+
+    @media (max-width: 1120px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  `
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -86,13 +121,11 @@ const StyledNavLink = styled(NavLink)`
       background-color: rgb(125, 48, 134);
     }
 
-   
-    @media (max-width: 1200px) {
-      width: 75px; 
-  }
-
-  @media (max-width: 900px) {
-     width: auto;
+    @media (max-width: 1120px) {
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     @media (max-width: 450px) {

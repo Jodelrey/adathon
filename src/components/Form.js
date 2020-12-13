@@ -4,12 +4,13 @@ import { Input, Label, Button } from "./primitive";
 
 const StyledForm = styled.form`
   width: 30%;
-  height: 250px;
+  height: 100%;
   display: flex;
   margin-top: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
   @media (max-width: 900px) {
     width: 50%;
   }
@@ -23,14 +24,13 @@ const StyledInput = styled(Input)`
   line-height: 20px;
   box-sizing: border-box;
   border-radius: 5px;
-  border: none;
-  background-color: #aaaaaa;
+  border: 1px solid #aaaaaa;
   outline: none;
   width: 100%;
   padding: 10px;
   font-size: 15px;
-  color: white;
-  font-weight: 500;
+  color: #555555;
+  font-weight: 600;
 `;
 
 const StyledLabel = styled(Label)`
@@ -67,6 +67,7 @@ const StyledButton = styled(Button)`
   font-weight: 600;
   font-size: 15px;
   transition: 0.3s easy-in;
+  margin-top: 10px;
   cursor: pointer;
   &:hover {
     background-color: #fd8c04;
@@ -88,7 +89,7 @@ const StyledButton = styled(Button)`
 //   }
 // `;
 
-const Form = ({ heading, product, description, cost, delivery }) => {
+const Form = ({ heading, product, description, gain, cost, delivery }) => {
   return (
     <>
       <StyledHeading>{heading}</StyledHeading>
@@ -96,27 +97,44 @@ const Form = ({ heading, product, description, cost, delivery }) => {
         {product && (
           <StyledLabel>
             Nombre del producto
-            <StyledInput />
+            <StyledInput type="text" name="producto_nombre" />
           </StyledLabel>
         )}
         {description && (
           <StyledLabel>
             Descripción del producto
-            <StyledInput />
+            <StyledInput type="text" name="producto_descripcion" />
           </StyledLabel>
         )}
 
         {cost && (
           <StyledLabel>
             Costo materias primas
-            <StyledInput />
+            <StyledInput
+              type="number"
+              step="0.01"
+              min="0"
+              name="costo_materia_prima"
+            />
+          </StyledLabel>
+        )}
+        {gain && (
+          <StyledLabel>
+            Rentabilidad (porcentaje)
+            <StyledInput
+              type="number"
+              step="0.01"
+              min="0"
+              max="100"
+              name="rentabilidad"
+            />
           </StyledLabel>
         )}
 
         {delivery && (
           <StyledLabel>
             Costo de envío
-            <StyledInput />
+            <StyledInput type="number" step="0.01" min="0" name="envio" />
           </StyledLabel>
         )}
         <StyledButton>Agregar</StyledButton>

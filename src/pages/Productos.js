@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from '../components/primitive';
+import { Container } from "../components/primitive";
 import Form from "../components/Form";
 import styled from "styled-components";
 
@@ -18,10 +18,11 @@ const Productos = () => {
     <>
       <StyledContainer>
         <Form
-          heading={Productos}
+          heading={"Productos"}
           product={true}
           description={true}
           cost={true}
+          gain={true}
           delivery={true}
         />
       </StyledContainer>
