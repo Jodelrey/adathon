@@ -13,7 +13,7 @@ const useFetchPost = (path, method, data, headers, dependenciesArray) => {
       .then((response) => {
         console.log(response);
         if (!response.ok) {
-          throw new Error(response.statusText);
+          throw new Error(response.error);
         } else {
           return response.json();
         }

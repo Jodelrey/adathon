@@ -22,7 +22,6 @@ const StyledForm = styled.form`
   width: 30%;
   height: 250px;
   display: flex;
-  margin-top: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -70,10 +69,23 @@ const StyledHeading = styled.h1`
     font-size: 25px;
   }
 `;
+const StyledErrorContainer = styled.div`
+  width: 50%;
+  margin: 0 auto;
+  height: 30px; 
+
+`;
+
+const StyledError = styled.p`
+  color: #e60000;
+  font-size: 15px;
+  text-align: center;
+`;
 
 const StyledButton = styled(Button)`
   color: #313131;
   margin-right: 0;
+  margin-bottom: 10px;
   width: 300px;
   border-radius: 8px;
   height: 40px;
@@ -117,18 +129,21 @@ const StyledLink = styled(Link)`
 `;
 
 const Login = () => {
-  const [loginUser, setLoginUser] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const { setIsLogged } = useContext(UserContext);
+  const {
+    setIsLogged,
+    setLoginPassword,
+    setLoginUser,
+    loginUser,
+    loginPassword,
+  } = useContext(UserContext);
 
   const signIn = (event) => {
     event.preventDefault();
     setLoginUser(event.target.email.value);
     setLoginPassword(event.target.password.value);
-
   };
 
-  const LoginInfo = useFetchPost(
+  const loginInfo = useFetchPost(
     "/usuario/login",
     "POST",
     {
@@ -139,12 +154,18 @@ const Login = () => {
     [loginUser, loginPassword]
   );
 
-
-
   return (
     <>
       <StyledContainer>
         <StyledHeading>Bienvenida</StyledHeading>
+        <StyledErrorContainer>
+          {loginInfo && (
+            <StyledError>
+              Hay un error en la contraseña o el usuario. Reinténtelo
+              nuevamente.
+            </StyledError>
+          )}
+        </StyledErrorContainer>
         <StyledForm method="post" onSubmit={(event) => signIn(event)}>
           <StyledLabel>
             Email

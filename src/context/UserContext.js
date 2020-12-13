@@ -2,16 +2,21 @@ import React, { createContext, useState } from "react";
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
- 
-  const [isLogged, setIsLogged] = useState(true);
+  const [loginUser, setLoginUser] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [isLogged, setIsLogged] = useState(false);
 
 
 
   return (
     <UserContext.Provider
       value={{
+        loginUser, 
+        loginPassword,
         isLogged,
-        setIsLogged
+        setIsLogged, 
+        setLoginUser, 
+        setLoginPassword
       }}
     >
       {children}

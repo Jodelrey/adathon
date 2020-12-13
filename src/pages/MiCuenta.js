@@ -76,12 +76,12 @@ const MiCuenta = () => {
         <StyledHeading>Mi Cuenta</StyledHeading>
       <StyledOptions>
         <StyledInput disabled value={"emaildelavendendora@gmail.com"} />
-        <StyledButton>Cambiar mail</StyledButton>
-        <StyledButton>Cambiar contraseña</StyledButton>
+        {/* <StyledButton>Cambiar mail</StyledButton>
+        <StyledButton>Cambiar contraseña</StyledButton> */}
         <StyledButton>Cerrar sesión</StyledButton>
       </StyledOptions>
       <StyledOptions>
-        <StyledButton>Eliminar Cuenta</StyledButton>
+        {/* <StyledButton>Eliminar Cuenta</StyledButton> */}
       </StyledOptions>
     </StyledContainer>
   );
