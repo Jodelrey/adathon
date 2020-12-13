@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Input, Label, Button } from "./primitive";
-import useFetchPost from "../hooks/useFetchPost";
+import useFetch from "../hooks/useFetch";
 import UserContext from "../context/UserContext";
 
 const StyledForm = styled.form`
@@ -125,13 +125,9 @@ const Form = ({
   const { loginUser } = useContext(UserContext);
   const [dataPost, setDataPost] = useState({});
 
+  const add = (event, entity) => {};
 
-
-  const add = (event, entity) => {
-
-  };
-
-  const loginInfo = useFetchPost(
+  const loginInfo = useFetch(
     "/usuario/login",
     "POST",
     {
@@ -139,8 +135,10 @@ const Form = ({
       password: 2,
     },
     { Accept: "application/json", "Content-Type": "application/json" },
-    [loginUser ]
+    [loginUser]
   );
+
+
   return (
     <>
       <StyledHeading>{heading}</StyledHeading>

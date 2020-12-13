@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
+import ApiCall from "../utils/ApiCall";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../context/UserContext";
-import useFetchPost from "../hooks/useFetchPost";
+import useFetch from "../hooks/useFetch";
 import { Container, Input, Label, Button, Text } from "../components/primitive";
 
 const StyledContainer = styled(Container)`
@@ -44,7 +45,7 @@ const StyledInput = styled(Input)`
   width: 100%;
   padding: 10px;
   font-size: 15px;
-  color: white;
+  color: #000;
   font-weight: 500;
 `;
 
@@ -72,8 +73,7 @@ const StyledHeading = styled.h1`
 const StyledErrorContainer = styled.div`
   width: 50%;
   margin: 0 auto;
-  height: 30px; 
-
+  height: 30px;
 `;
 
 const StyledError = styled.p`
@@ -142,38 +142,72 @@ const Login = () => {
     setLoginUser(event.target.email.value);
     setLoginPassword(event.target.password.value);
   };
+ 
+ 
+  useEffect(() => {
+    console.log(loginUser, loginPassword)
+    fetch(
+      `${ApiCall}/usuario/registrar`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          "Accept": "application/json"
+        },
+        mode: "no-cors",
+        method: "POST",
+        body: JSON.stringify({
+          email: loginUser,
+          password: loginPassword,
+        }),
+      },
+    )
+      .then((response) => {
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(response.error);
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setIsLogged(true);
+      })
+      .catch((error) => console.log(error));
 
-  const loginInfo = useFetchPost(
-    "/usuario/login",
-    "POST",
-    {
-      email: loginUser,
-      password: loginPassword,
-    },
-    { Accept: "application/json", "Content-Type": "application/json" },
-    [loginUser, loginPassword]
-  );
+  }, [loginUser, loginPassword]);
+
+  // const loginInfo = useFetch(
+  //   "/usuario/login",
+  //   "POST",
+  //   {
+  //     email: loginUser,
+  //     password: loginPassword,
+  //   },
+  //   { Accept: "application/json", "Content-Type": "application/json", mode: 'no-cors' },
+  //   [loginUser, loginPassword]
+  // );
 
   return (
     <>
       <StyledContainer>
         <StyledHeading>Bienvenida</StyledHeading>
         <StyledErrorContainer>
-          {loginInfo && (
+          {/* {loginInfo && (
             <StyledError>
               Hay un error en la contraseña o el usuario. Reinténtelo
               nuevamente.
             </StyledError>
-          )}
+          )} */}
         </StyledErrorContainer>
         <StyledForm method="post" onSubmit={(event) => signIn(event)}>
           <StyledLabel>
             Email
-            <StyledInput type="email" name="email" value={{}} />
+            <StyledInput type="email" name="email" />
           </StyledLabel>
           <StyledLabel>
             Contraseña
-            <StyledInput type="password" name="password" min="6" value={{}} />
+            <StyledInput type="password" name="password" min="6" />
           </StyledLabel>
           <StyledText>
             Si olvido su contraseña haga click
