@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "../components/primitives";
+import { Container } from '../components/primitive';
 import Form from "../components/Form";
 import styled from "styled-components";
 
