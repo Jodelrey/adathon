@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
-import { Container, Input, Label, Button, Text } from "../components/primitive";
+import UserContext from "../context/UserContext"
+import { Container, Input, Button } from "../components/primitive";
 
 //import UserContext from "../contexts/UserContext";
 
@@ -71,11 +72,12 @@ const StyledButton = styled(Button)`
 
 
 const MiCuenta = () => {
+  const {loginUser} = useContext(UserContext)
   return (
     <StyledContainer>
         <StyledHeading>Mi Cuenta</StyledHeading>
       <StyledOptions>
-        <StyledInput disabled value={"emaildelavendendora@gmail.com"} />
+        <StyledInput disabled value={loginUser} />
         <StyledButton>Cambiar mail</StyledButton>
         <StyledButton>Cambiar contraseña</StyledButton>
         <StyledButton>Cerrar sesión</StyledButton>
