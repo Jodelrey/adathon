@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Input, Label, Button } from "./primitive";
-import useFetchPost from "../hooks/useFetchPost";
+import useFetch from "../hooks/useFetch";
 import UserContext from "../context/UserContext";
 
 const StyledForm = styled.form`
@@ -126,6 +126,18 @@ const Form = ({
   const [dataPost, setDataPost] = useState({});
 
   const add = (event, entity) => {};
+
+  const loginInfo = useFetch(
+    "/usuario/login",
+    "POST",
+    {
+      email: loginUser,
+      password: 2,
+    },
+    { Accept: "application/json", "Content-Type": "application/json" },
+    [loginUser]
+  );
+
 
   return (
     <>

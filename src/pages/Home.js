@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Container } from "../components/primitive";
-import Graphic from "../components/Graphic";
+import GraphicLine from "../components/GraphicLine";
 import Snippet from "../components/Snippet";
 
 const StyledHome = styled(Container)`
@@ -32,7 +32,7 @@ const StyledSnippetContainer = styled(Container)`
   }
 `;
 
-const StyledGraphicContainer = styled(Container)`
+const StyledGraphicLineContainer = styled(Container)`
   width: 50%;
   padding: 35px;
   display: flex;
@@ -48,9 +48,9 @@ const StyledGraphicContainer = styled(Container)`
 const Home = () => {
   return (
     <StyledHome>
-      <StyledGraphicContainer>
-        <Graphic />
-      </StyledGraphicContainer>
+      <StyledGraphicLineContainer>
+        <GraphicLine />
+      </StyledGraphicLineContainer>
       <StyledSnippetContainer>
         <Snippet />
         <Snippet />

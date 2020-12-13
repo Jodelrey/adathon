@@ -1,7 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-const Graphic = () => {
+const GraphicLine = () => {
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <Line
@@ -42,4 +42,4 @@ const Graphic = () => {
   );
 };
 
-export default Graphic;
+export default GraphicLine;

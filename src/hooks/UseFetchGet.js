@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ApiCall from "../utils/ApiCall";
 
-const useFetchPost = (path, dependenciesArray) => {
+const useFetch = (path, dependenciesArray) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -24,4 +24,4 @@ const useFetchPost = (path, dependenciesArray) => {
   return { data, error };
 };
 
-export default useFetchPost;
+export default useFetch;
