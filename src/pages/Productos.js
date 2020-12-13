@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "../components/primitive";
 import Form from "../components/Form";
 import styled from "styled-components";
+import Catalog from "../components/Catalog";
 
 const StyledContainer = styled(Container)`
   width: 100%;
@@ -26,6 +27,7 @@ const Productos = () => {
           delivery={true}
           entity={"/producto/crear"}
         />
+        <Catalog />
       </StyledContainer>
     </>
   );
