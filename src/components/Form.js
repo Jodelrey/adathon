@@ -172,7 +172,6 @@ const Form = ({
           throw new Error(response.error);
         } else {
           setIsCreated(true);
-          console.log("esta creado");
         }
       })
       .catch((error) => setError(error));
