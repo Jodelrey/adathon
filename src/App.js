@@ -15,7 +15,6 @@ import {
   Error,
   Home,
   Informes,
-  Home,
   Login,
   Register,
   MiCuenta,

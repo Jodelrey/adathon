@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "../components/primitive";
 import Form from "../components/Form";
+import Catalog from "../components/ProductCatalog";
 import styled from "styled-components";
 
 const StyledContainer = styled(Container)`
@@ -12,6 +13,8 @@ const StyledContainer = styled(Container)`
   align-items: center;
   justify-content: space-between;
 `;
+
+
 
 const Productos = () => {
   return (
@@ -27,6 +30,7 @@ const Productos = () => {
           entity={"producto/crear"}
         />
       </StyledContainer>
+      < Catalog />
     </>
   );
 };
