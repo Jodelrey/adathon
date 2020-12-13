@@ -46,10 +46,10 @@ const StyledButton = styled(Button)`
   }
 `;
 const Catalog = () => {
-  const catalogList = useFetchGet("/producto", {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  });
+  // const catalogList = useFetchGet("/producto", {
+  //   Accept: "application/json",
+  //   "Content-Type": "application/json",
+  // });
   //const data = catalogList.data;
   console.log(catalogList);
   const data = [
