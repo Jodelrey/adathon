@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import UserContext from "../context/UserContext"
 import ApiCall from "../utils/ApiCall";
 
-const useFetchPost = (path, method, data, dependenciesArray) => {
-  const [userData, setUserData] = useState(null);
+const useFetchPost = (path, method, data, headers, dependenciesArray) => {
+  const {setisLogged} = useContext(UserContext)
   const [error, setError] = useState(null);
 
   const request = { method: method, body: JSON.stringify(data) };
 
   useEffect(() => {
-    fetch(`${ApiCall}${path}`, request)
+    fetch(`${ApiCall}${path}`, request, headers)
       .then((response) => {
         console.log(response);
         if (!response.ok) {
@@ -18,12 +19,15 @@ const useFetchPost = (path, method, data, dependenciesArray) => {
         }
       })
       .then((data) => {
-        setUserData(data);
+        console.log(data)
+        setisLogged(true)
       })
       .catch((error) => setError(error));
+
+
   }, dependenciesArray);
 
-  return { data, error };
+  return { error };
 };
 
 export default useFetchPost;

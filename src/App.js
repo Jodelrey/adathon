@@ -1,5 +1,10 @@
-import {useContext} from "react"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import UserContext from "./context/UserContext";
 import { Container } from "./components/primitive";
@@ -37,40 +42,48 @@ body {
 }`;
 
 function App() {
-  const {isLogged} = useContext(UserContext)
+  const { isLogged } = useContext(UserContext);
 
   return (
-    <Container className="App">
-      <Router>
-        <GlobalStyle />
+    <>
+      <GlobalStyle />
+      <Container>
+        <Router>
         <NavMenu />
-        <Switch>
-          <Route exact path="/">
-           {isLogged ? <Home/> : <Login/>}
-          </Route>
-          <Route exact path="/Costos">
-            <Costos />
-          </Route>
-          <Route exact path="/Informes">
-            <Informes />
-          </Route>
-          <Route exact path="/MiCuenta">
-            <MiCuenta />
-          </Route>
-          <Route exact path="/Productos">
-            <Productos />
-          </Route>
-          <Route exact path="/Ventas">
-            <Ventas />
-          </Route>
-          <Route>
-            <Error />
-          </Route>
-        </Switch>
-      </Router>
+          <Switch>
+            <Route exact path="/">
+              {isLogged ? <Home /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Costos">
+              {isLogged ? <Costos /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Informes">
+              {isLogged ? <Informes /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/MiCuenta">
+              {isLogged ? <MiCuenta /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Productos">
+              {isLogged ? <Productos /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Ventas">
+              {isLogged ? <Ventas /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Login">
+            {!isLogged ? <Login /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Registrarse">
+            {!isLogged ? <Register /> : <Redirect to="/Login" />}
+            </Route>
+            <Route>
+              <Error />
+            </Route>
+          </Switch>
+        </Router>
 
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </>
   );
 }
 

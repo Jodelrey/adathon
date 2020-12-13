@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../context/UserContext";
+import useFetchPost from "../hooks/useFetchPost";
 import { Container, Input, Label, Button, Text } from "../components/primitive";
 
-//import UserContext from "../contexts/UserContext";
-
 const StyledContainer = styled(Container)`
-  font-family: 'Nunito', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Nunito", Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
   min-height: calc(100vh - 220px);
   box-sizing: border-box;
@@ -86,10 +85,9 @@ const StyledButton = styled(Button)`
   transition: 0.3s;
   cursor: pointer;
 
-
   &:hover {
     transition: 0.3s ease-in;
-    background-color: #ffa11a; 
+    background-color: #ffa11a;
   }
 
   @media (max-width: 600px) {
@@ -119,53 +117,42 @@ const StyledLink = styled(Link)`
 `;
 
 const Login = () => {
-  const {
-    loginUser,
-    setLoginUser,
-    loginPassword,
-    setLoginPassword,
-  } = useContext(UserContext);
-  //   const [error, setError] = useState(false);
-  //   const [modal, setModal] = useState(false);
-  //   const history = useHistory();
-  //   const { theme } = useContext(ThemeContext);
-  //   const { user } = useContext(UserContext);
-  //   const emailRef = useRef(null);
-  //   const passRef = useRef(null);
-  //   const submitRef = useRef(null);
+  const [loginUser, setLoginUser] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const { setIsLogged } = useContext(UserContext);
 
-  //   useEffect(() => {
-  //     emailRef.current.focus();
-  //   }, []);
+  const signIn = (event) => {
+    event.preventDefault();
+    setLoginUser(event.target.email.value);
+    setLoginPassword(event.target.password.value);
 
-  //   const handleEmailDown = (event) => {
-  //     if (event.key === "Enter") {
-  //       passRef.current.focus();
-  //     }
-  //   };
+  };
 
-  //   const handlePassDown = (event) => {
-  //     if (event.key === "Enter") {
-  //       submitRef.current.focus();
-  //     }
-  //   };
+  const LoginInfo = useFetchPost(
+    "/usuario/login",
+    "POST",
+    {
+      email: loginUser,
+      password: loginPassword,
+    },
+    { Accept: "application/json", "Content-Type": "application/json" },
+    [loginUser, loginPassword]
+  );
 
-  //   const handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     setError(false);
+
 
   return (
     <>
       <StyledContainer>
         <StyledHeading>Bienvenida</StyledHeading>
-        <StyledForm>
+        <StyledForm method="post" onSubmit={(event) => signIn(event)}>
           <StyledLabel>
             Email
             <StyledInput type="email" name="email" />
           </StyledLabel>
           <StyledLabel>
             Contraseña
-            <StyledInput type="password" name="password" />
+            <StyledInput type="password" name="password" min="6" />
           </StyledLabel>
           <StyledText>
             Si olvido su contraseña haga click
