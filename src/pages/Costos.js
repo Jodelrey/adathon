@@ -24,6 +24,7 @@ const Costos = () => {
           cel={true}
           taxes={true}
           publicity={true}
+          entity={"costo/registrar"}
         />
       </StyledContainer>
     </>

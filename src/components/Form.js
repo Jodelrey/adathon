@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Input, Label, Button } from "./primitive";
+import useFetchPost from "../hooks/useFetchPost";
+import UserContext from "../context/UserContext";
 
 const StyledForm = styled.form`
   width: 30%;
@@ -118,7 +120,13 @@ const Form = ({
   quantity,
   price,
   date,
+  entity,
 }) => {
+  const { loginUser } = useContext(UserContext);
+  const [dataPost, setDataPost] = useState({});
+
+  const add = (event, entity) => {};
+
   return (
     <>
       <StyledHeading>{heading}</StyledHeading>
@@ -238,7 +246,9 @@ const Form = ({
             <StyledInput type="date" name="fecha" />
           </StyledLabel>
         )}
-        <StyledButton>Agregar</StyledButton>
+        <StyledButton onClick={(event, entity) => add(event, entity)}>
+          Agregar
+        </StyledButton>
       </StyledForm>
     </>
   );
