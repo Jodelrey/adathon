@@ -6,7 +6,7 @@ import Snippet from "../components/Snippet";
 
 const StyledHome = styled(Container)`
   padding: 35px;
-  height: calc(100vh - 220px);
+  min-height: calc(100vh - 220px);
   box-sizing: border-box;
   display: flex;
   justify-content: space-evenly;
