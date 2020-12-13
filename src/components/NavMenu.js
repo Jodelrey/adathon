@@ -5,23 +5,25 @@ import logo from "../img/logo_top.gif";
 import { Menu } from "@styled-icons/ionicons-solid/Menu";
 import Aside from "./Aside";
 import AsideContext from "../context/AsideContext";
+import UserContext from "../context/UserContext";
 
 const StyledNav = styled.nav`
   width: 100%;
   height: 70px;
-  padding: 0 80px; 
+  padding: 0 80px;
   box-sizing: border-box;
   background-color: #8c1886;
   display: flex;
-  justify-content: space-evenly;
+
+  justify-content: ${props => props.isLogged ? "space-evenly" : "flex-start"};
   align-items: center;
 
   @media (max-width: 1050px) {
-     padding: 0 40px; 
-    }
+    padding: 0 40px;
+  }
 
   @media (max-width: 900px) {
-    padding: 5px; 
+    padding: 5px;
   }
 `;
 
@@ -43,13 +45,12 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-height: 60px;
-margin-left: 15px;
+  height: 60px;
+  margin-left: 15px;
   @media (max-width: 320px) {
     height: 25px;
   }
 `;
-
 
 const ResponsiveNav = styled.div`
   display: flex;
@@ -65,8 +66,8 @@ const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  outline: none; 
-  cursor: pointer; 
+  outline: none;
+  cursor: pointer;
   color: #f7f6e7;
   text-decoration: none;
   transition: 0.3s;
@@ -76,25 +77,25 @@ const StyledLink = styled(NavLink)`
   width: 220px;
   text-align: center;
 
-    &:hover {
-      text-decoration: none;
-      color: #b8b0b0;
-      transition: 0.3s;
-    }
-    &:active {
-      text-decoration: none;
-      color: #f7f6e7;
-    }
-    &.selected {
-      background-color: rgb(125, 48, 134);
-    }
+  &:hover {
+    text-decoration: none;
+    color: #b8b0b0;
+    transition: 0.3s;
+  }
+  &:active {
+    text-decoration: none;
+    color: #f7f6e7;
+  }
+  &.selected {
+    background-color: rgb(125, 48, 134);
+  }
 
-    @media (max-width: 1120px) {
+  @media (max-width: 1120px) {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  `
+`;
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -108,33 +109,32 @@ const StyledNavLink = styled(NavLink)`
   width: 200px;
   text-align: center;
 
-    &:hover {
-      text-decoration: none;
-      color: #ff9600;
-      transition: 0.3s;
-    }
-    &:active {
-      text-decoration: none;
-      color: #f7f6e7;
-    }
-    &.selected {
-      background-color: rgb(125, 48, 134);
-    }
+  &:hover {
+    text-decoration: none;
+    color: #ff9600;
+    transition: 0.3s;
+  }
+  &:active {
+    text-decoration: none;
+    color: #f7f6e7;
+  }
+  &.selected {
+    background-color: rgb(125, 48, 134);
+  }
 
-    @media (max-width: 1120px) {
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  @media (max-width: 1120px) {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    @media (max-width: 450px) {
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
+  @media (max-width: 450px) {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const DropdownMenu = styled.div`
@@ -156,38 +156,42 @@ const StyledMenu = styled(Menu)`
 
 const NavMenu = () => {
   const { handleMenuClick, hidden } = useContext(AsideContext);
+  const { isLogged } = useContext(UserContext);
 
   return (
-    <StyledNav>
+    <StyledNav isLogged={isLogged}>
+      <Image src={logo} />
 
-        <Image src={logo} />
-   
-
-      <ResponsiveNav>
-        <StyledNavLink exact activeClassName="selected" to="/">
-          Inicio
-        </StyledNavLink>
-        <StyledNavLink exact activeClassName="selected" to="/Ventas">
-          Ventas
-        </StyledNavLink>
-        <StyledNavLink exact activeClassName="selected" to="/Productos">
-          Productos
-        </StyledNavLink>
-        <StyledNavLink exact activeClassName="selected" to="/Costos">
-          Costos
-        </StyledNavLink>
-        <StyledNavLink exact activeClassName="selected" to="/Informes">
-          Informes
-        </StyledNavLink>
-        <StyledNavLink exact activeClassName="selected" to="/MiCuenta">
-          Mi cuenta
-        </StyledNavLink>
-      </ResponsiveNav>
-
-      <DropdownMenu>
-        <StyledMenu onClick={handleMenuClick} />
-        {!hidden && <Aside />}
-      </DropdownMenu>
+      <>
+        {isLogged && (
+          <>
+            <ResponsiveNav>
+              <StyledNavLink exact activeClassName="selected" to="/">
+                Inicio
+              </StyledNavLink>
+              <StyledNavLink exact activeClassName="selected" to="/Ventas">
+                Ventas
+              </StyledNavLink>
+              <StyledNavLink exact activeClassName="selected" to="/Productos">
+                Productos
+              </StyledNavLink>
+              <StyledNavLink exact activeClassName="selected" to="/Costos">
+                Costos
+              </StyledNavLink>
+              <StyledNavLink exact activeClassName="selected" to="/Informes">
+                Informes
+              </StyledNavLink>
+              <StyledNavLink exact activeClassName="selected" to="/MiCuenta">
+                Mi cuenta
+              </StyledNavLink>
+            </ResponsiveNav>
+            <DropdownMenu>
+              <StyledMenu onClick={handleMenuClick} />
+              {!hidden && <Aside />}
+            </DropdownMenu>
+          </>
+        )}
+      </>
     </StyledNav>
   );
 };

@@ -6,15 +6,17 @@ const UserProvider = ({ children }) => {
   const [loginPassword, setLoginPassword] = useState("");
   const [isLogged, setIsLogged] = useState(false);
 
+
+
   return (
     <UserContext.Provider
       value={{
-        loginUser,
+        loginUser, 
         loginPassword,
         isLogged,
-        setIsLogged,
-        setLoginUser,
-        setLoginPassword,
+        setIsLogged, 
+        setLoginUser, 
+        setLoginPassword
       }}
     >
       {children}

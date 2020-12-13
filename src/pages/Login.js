@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../context/UserContext";
+import useFetchPost from "../hooks/useFetchPost";
 import { Container, Input, Label, Button, Text } from "../components/primitive";
 
-//import UserContext from "../contexts/UserContext";
-
 const StyledContainer = styled(Container)`
+  font-family: "Nunito", Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
-  //min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 220px);
+  box-sizing: border-box;
+  padding: 40px 0;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -20,7 +22,6 @@ const StyledForm = styled.form`
   width: 30%;
   height: 250px;
   display: flex;
-  margin-top: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +39,7 @@ const StyledInput = styled(Input)`
   box-sizing: border-box;
   border-radius: 5px;
   border: none;
-  background-color: #aaaaaa;
+  border: 1px solid #aaaaaa;
   outline: none;
   width: 100%;
   padding: 10px;
@@ -68,23 +69,37 @@ const StyledHeading = styled.h1`
     font-size: 25px;
   }
 `;
+const StyledErrorContainer = styled.div`
+  width: 50%;
+  margin: 0 auto;
+  height: 30px; 
+
+`;
+
+const StyledError = styled.p`
+  color: #e60000;
+  font-size: 15px;
+  text-align: center;
+`;
 
 const StyledButton = styled(Button)`
+  color: #313131;
   margin-right: 0;
+  margin-bottom: 10px;
   width: 300px;
   border-radius: 8px;
   height: 40px;
   outline: none;
   border: none;
-  background-color: #ff9600;
-  color: white;
   font-weight: 600;
   font-size: 15px;
-  transition: 0.3s easy-in;
+  background-color: #ff9600;
+  transition: 0.3s;
   cursor: pointer;
+
   &:hover {
-    background-color: #fd8c04;
-    transition: 0.3s easy-in;
+    transition: 0.3s ease-in;
+    background-color: #ffa11a;
   }
 
   @media (max-width: 600px) {
@@ -115,52 +130,50 @@ const StyledLink = styled(Link)`
 
 const Login = () => {
   const {
-    loginUser,
-    setLoginUser,
-    loginPassword,
+    setIsLogged,
     setLoginPassword,
+    setLoginUser,
+    loginUser,
+    loginPassword,
   } = useContext(UserContext);
-  //   const [error, setError] = useState(false);
-  //   const [modal, setModal] = useState(false);
-  //   const history = useHistory();
-  //   const { theme } = useContext(ThemeContext);
-  //   const { user } = useContext(UserContext);
-  //   const emailRef = useRef(null);
-  //   const passRef = useRef(null);
-  //   const submitRef = useRef(null);
 
-  //   useEffect(() => {
-  //     emailRef.current.focus();
-  //   }, []);
+  const signIn = (event) => {
+    event.preventDefault();
+    setLoginUser(event.target.email.value);
+    setLoginPassword(event.target.password.value);
+  };
 
-  //   const handleEmailDown = (event) => {
-  //     if (event.key === "Enter") {
-  //       passRef.current.focus();
-  //     }
-  //   };
-
-  //   const handlePassDown = (event) => {
-  //     if (event.key === "Enter") {
-  //       submitRef.current.focus();
-  //     }
-  //   };
-
-  //   const handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     setError(false);
+  const loginInfo = useFetchPost(
+    "/usuario/login",
+    "POST",
+    {
+      email: loginUser,
+      password: loginPassword,
+    },
+    { Accept: "application/json", "Content-Type": "application/json" },
+    [loginUser, loginPassword]
+  );
 
   return (
     <>
       <StyledContainer>
         <StyledHeading>Bienvenida</StyledHeading>
-        <StyledForm>
+        <StyledErrorContainer>
+          {loginInfo && (
+            <StyledError>
+              Hay un error en la contraseña o el usuario. Reinténtelo
+              nuevamente.
+            </StyledError>
+          )}
+        </StyledErrorContainer>
+        <StyledForm method="post" onSubmit={(event) => signIn(event)}>
           <StyledLabel>
             Email
             <StyledInput type="email" name="email" />
           </StyledLabel>
           <StyledLabel>
             Contraseña
-            <StyledInput type="password" name="password" />
+            <StyledInput type="password" name="password" min="6" />
           </StyledLabel>
           <StyledText>
             Si olvido su contraseña haga click

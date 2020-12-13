@@ -1,11 +1,19 @@
-import { Container } from "./components/primitive";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import UserContext from "./context/UserContext";
+import { Container } from "./components/primitive";
 import NavMenu from "./components/NavMenu";
 import Footer from "./components/Footer";
 import {
   Costos,
   Error,
+  Home,
   Informes,
   Home,
   Login,
@@ -20,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: 'Montserrat', sans-serif;
   display: flex;
@@ -34,38 +43,48 @@ body {
 }`;
 
 function App() {
-  return (
-    <Container className="App">
-      <Router>
-        <GlobalStyle />
-        <NavMenu />
-        <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          <Route exact path="/Costos">
-            <Costos />
-          </Route>
-          <Route exact path="/Informes">
-            <Informes />
-          </Route>
-          <Route exact path="/MiCuenta">
-            <MiCuenta />
-          </Route>
-          <Route exact path="/Productos">
-            <Productos />
-          </Route>
-          <Route exact path="/Ventas">
-            <Ventas />
-          </Route>
-          <Route>
-            <Error />
-          </Route>
-        </Switch>
-      </Router>
+  const { isLogged } = useContext(UserContext);
 
-      <Footer />
-    </Container>
+  return (
+    <>
+      <GlobalStyle />
+      <Container>
+        <Router>
+        <NavMenu />
+          <Switch>
+            <Route exact path="/">
+              {isLogged ? <Home /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Costos">
+              {isLogged ? <Costos /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Informes">
+              {isLogged ? <Informes /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/MiCuenta">
+              {isLogged ? <MiCuenta /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Productos">
+              {isLogged ? <Productos /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Ventas">
+              {isLogged ? <Ventas /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Login">
+            {!isLogged ? <Login /> : <Redirect to="/Login" />}
+            </Route>
+            <Route exact path="/Registrarse">
+            {!isLogged ? <Register /> : <Redirect to="/Login" />}
+            </Route>
+            <Route>
+              <Error />
+            </Route>
+          </Switch>
+        </Router>
+
+        <Footer />
+      </Container>
+    </>
   );
 }
 
