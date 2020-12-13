@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Container } from "../components/primitive";
-import Graphic from "../components/Graphic";
+import GraphicLine from "../components/GraphicLine";
 import Snippet from "../components/Snippet";
 
 const StyledHome = styled(Container)`
@@ -49,7 +49,7 @@ const Home = () => {
   return (
     <StyledHome>
       <StyledGraphicContainer>
-        <Graphic />
+        <GraphicLine />
       </StyledGraphicContainer>
       <StyledSnippetContainer>
         <Snippet />
