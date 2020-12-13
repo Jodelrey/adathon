@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../context/UserContext";
-import useFetchPost from "../hooks/useFetchPost";
+import useFetch from "../hooks/useFetch";
 import { Container, Input, Label, Button, Text } from "../components/primitive";
 
 const StyledContainer = styled(Container)`
@@ -72,8 +72,7 @@ const StyledHeading = styled.h1`
 const StyledErrorContainer = styled.div`
   width: 50%;
   margin: 0 auto;
-  height: 30px; 
-
+  height: 30px;
 `;
 
 const StyledError = styled.p`
@@ -143,7 +142,7 @@ const Login = () => {
     setLoginPassword(event.target.password.value);
   };
 
-  const loginInfo = useFetchPost(
+  const loginInfo = useFetch(
     "/usuario/login",
     "POST",
     {

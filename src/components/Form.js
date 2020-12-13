@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Input, Label, Button } from "./primitive";
-import useFetchPost from "../hooks/useFetchPost";
+import useFetch from "../hooks/useFetch";
 import UserContext from "../context/UserContext";
 
 const StyledForm = styled.form`
