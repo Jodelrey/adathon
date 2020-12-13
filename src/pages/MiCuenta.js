@@ -1,20 +1,21 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import UserContext from "../context/UserContext"
+import UserContext from "../context/UserContext";
 import { Container, Input, Button } from "../components/primitive";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 //import UserContext from "../contexts/UserContext";
 
 const StyledContainer = styled(Container)`
   width: 100%;
   min-height: calc(100vh - 220px);
-  box-sizing: border-box; 
+  box-sizing: border-box;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 30px; 
+  padding: 30px;
 `;
 
 const StyledHeading = styled.h1`
@@ -22,12 +23,11 @@ const StyledHeading = styled.h1`
   font-weight: 400;
   color: #8c1886;
   margin-top: 30px;
-  font-weight: 600; 
+  font-weight: 600;
   @media (max-width: 600px) {
     font-size: 25px;
   }
 `;
-
 
 const StyledOptions = styled(Container)`
   width: 30%;
@@ -42,17 +42,17 @@ const StyledInput = styled(Input)`
   outline: none;
   width: 100%;
   padding: 10px 10px 10px 15px;
-  
+
   font-size: 15px;
   font-weight: 500;
 `;
 
 const StyledButton = styled(Button)`
-  cursor: pointer; 
+  cursor: pointer;
   margin: 10px 0;
   line-height: 20px;
   box-sizing: border-box;
-  border:none; 
+  border: none;
   border-radius: 8px;
   outline: none;
   width: 100%;
@@ -64,23 +64,27 @@ const StyledButton = styled(Button)`
   transition: 0.3s;
 
   &:hover {
-      transition: 0.3s ease-in;
-      background-color: #ffa11a; 
+    transition: 0.3s ease-in;
+    background-color: #ffa11a;
   }
-
-`
-
+`;
 
 const MiCuenta = () => {
-  const {loginUser} = useContext(UserContext)
+  const { loginUser, setIsLogged } = useContext(UserContext);
+  const { removeFromLocalStorage } = useLocalStorage();
+
+  const handleCloseSession = () => {
+    console.log("entro a closeSession");
+    setIsLogged(removeFromLocalStorage());
+  };
   return (
     <StyledContainer>
-        <StyledHeading>Mi Cuenta</StyledHeading>
+      <StyledHeading>Mi Cuenta</StyledHeading>
       <StyledOptions>
         <StyledInput disabled value={loginUser} />
         <StyledButton>Cambiar mail</StyledButton>
         <StyledButton>Cambiar contraseña</StyledButton>
-        <StyledButton>Cerrar sesión</StyledButton>
+        <StyledButton onClick={handleCloseSession}>Cerrar sesión</StyledButton>
       </StyledOptions>
       <StyledOptions>
         <StyledButton>Eliminar Cuenta</StyledButton>
