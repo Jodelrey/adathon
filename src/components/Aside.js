@@ -37,43 +37,7 @@ const DropdownItem = styled.li`
   display: flex;
 `;
 
-const StyledLink = styled(Link)`
- font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
-  color: #f7f6e7;
-  text-decoration: none;
-  transition: 0.3s;
-  padding: 15px;
-  font-size: 20px;
-  width: 220px;
-  height: 100%;
-
-  @media (max-width: 1120px) {
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  @media (max-width: 450px) {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  &:hover {
-    text-decoration: none;
-    color: #b8b0b0;
-    transition: 0.3s;
-  }
-  &:active {
-    text-decoration: none;
-    color: #f7f6e7;
-  }
-  &.selected {
-    background-color: #3f4a4e;
-  }`;
-
 const StyledNavLink = styled(NavLink)`
-  font-family: "Oswald", Verdana, Geneva, Tahoma, sans-serif;
   color: #f7f6e7;
   text-decoration: none;
   transition: 0.3s;
@@ -96,7 +60,7 @@ const StyledNavLink = styled(NavLink)`
   }
   &:hover {
     text-decoration: none;
-    color: #b8b0b0;
+    color: #ff9600;
     transition: 0.3s;
   }
   &:active {
@@ -104,7 +68,7 @@ const StyledNavLink = styled(NavLink)`
     color: #f7f6e7;
   }
   &.selected {
-    background-color: #3f4a4e;
+    background-color: #8c1886;
   }
 `;
 // ------------ANIMATIONS ----------------
@@ -176,7 +140,9 @@ const Aside = () => {
               </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-              <StyledLink>Cerrar sesión</StyledLink>
+            <StyledNavLink exact activeClassName="selected" to="/Contacto">
+                Mi cuenta
+              </StyledNavLink>
             </DropdownItem>
           </DropdownList>
         </FadeLeftDiv>

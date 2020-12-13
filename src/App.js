@@ -3,8 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import NavMenu from "./components/NavMenu";
 import Footer from "./components/Footer";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import {
+  Costos,
+  Error,
+  Informes,
+  Login,
+  Register,
+  MiCuenta,
+  Productos,
+  Ventas,
+} from "./pages";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -21,9 +29,7 @@ body {
   min-height: 100vh;
   box-sizing: content-box;
   position: relative;
-  /* @media(max-width: 450px) {
-    height: 100%;
-  } */
+
 }`;
 
 function App() {
@@ -36,11 +42,24 @@ function App() {
           <Route exact path="/">
             <Register />
           </Route>
-          <Route exact path="/Nosotros"></Route>
-          <Route exact path="/Productos"></Route>
-          <Route exact path="/Reparto"></Route>
-          <Route exact path="/Contacto"></Route>
-          <Route></Route>
+          <Route exact path="/Costos">
+            <Costos />
+          </Route>
+          <Route exact path="/Informes">
+            <Informes />
+          </Route>
+          <Route exact path="/MiCuenta">
+            <MiCuenta />
+          </Route>
+          <Route exact path="/Productos">
+            <Productos />
+          </Route>
+          <Route exact path="/Ventas">
+            <Ventas />
+          </Route>
+          <Route>
+            <Error />
+          </Route>
         </Switch>
       </Router>
 
