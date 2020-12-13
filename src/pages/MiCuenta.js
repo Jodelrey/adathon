@@ -52,19 +52,19 @@ const StyledButton = styled(Button)`
   line-height: 20px;
   box-sizing: border-box;
   border:none; 
-  border-radius: 5px;
+  border-radius: 8px;
   outline: none;
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  font-weight: 500;
-  background-color: #5a2360;
-  color: #FFF;
+  font-weight: 600;
+  background-color: #ff9600;
+  color: #313131;
   transition: 0.3s;
 
   &:hover {
-      transition: 0.3s;
-      background-color: #8f3799; 
+      transition: 0.3s ease-in;
+      background-color: #ffa11a; 
   }
 
 `

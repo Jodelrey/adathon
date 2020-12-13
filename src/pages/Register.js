@@ -7,8 +7,11 @@ import { Container, Input, Label, Button, Text } from "../components/primitive";
 //import UserContext from "../contexts/UserContext";
 
 const StyledContainer = styled(Container)`
+  font-family: 'Nunito', Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+  padding: 35px; 
   width: 100%;
-  //min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 220px);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -48,7 +51,7 @@ const StyledInput = styled(Input)`
   box-sizing: border-box;
   border-radius: 5px;
   border: none;
-  background-color: #aaaaaa;
+  border: 1px solid #aaaaaa;
   outline: none;
   width: 100%;
   padding: 10px;
@@ -88,14 +91,14 @@ const StyledButton = styled(Button)`
   border: none;
   margin-top: 20px;
   background-color: #ff9600;
-  color: white;
+  color: #313131;
   font-weight: 600;
   font-size: 15px;
   transition: 0.3s easy-in;
   cursor: pointer;
   &:hover {
-    background-color: #fd8c04;
-    transition: 0.3s easy-in;
+    transition: 0.3s ease-in;
+    background-color: #ffa11a; 
   }
 
   @media (max-width: 600px) {

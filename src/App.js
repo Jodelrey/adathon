@@ -1,11 +1,14 @@
-import { Container } from "./components/primitive";
+import {useContext} from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import UserContext from "./context/UserContext";
+import { Container } from "./components/primitive";
 import NavMenu from "./components/NavMenu";
 import Footer from "./components/Footer";
 import {
   Costos,
   Error,
+  Home,
   Informes,
   Login,
   Register,
@@ -19,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: 'Nunito', Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
@@ -33,6 +37,8 @@ body {
 }`;
 
 function App() {
+  const {isLogged} = useContext(UserContext)
+
   return (
     <Container className="App">
       <Router>
@@ -40,7 +46,7 @@ function App() {
         <NavMenu />
         <Switch>
           <Route exact path="/">
-            <Register />
+           {isLogged ? <Home/> : <Login/>}
           </Route>
           <Route exact path="/Costos">
             <Costos />
