@@ -14,19 +14,18 @@ const StyledContainer = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #435055;
 `;
 
 const StyledForm = styled.form`
   margin: 30px 0;
-  width: 40%;
+  width: 30%;
   height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.2);
+  /* background-color: rgba(255, 255, 255, 0.2);
   padding: 2em;
   border-radius: 3em;
   backdrop-filter: blur(40px);
@@ -34,11 +33,11 @@ const StyledForm = styled.form`
   background-clip: padding-box;
   box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
   border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  @media (max-width: 800px) {
-    width: 80%;
+  border-left: 1px solid rgba(255, 255, 255, 0.5); */
+  @media (max-width: 900px) {
+    width: 50%;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     width: 70%;
   }
 `;
@@ -61,7 +60,7 @@ const StyledInput = styled(Input)`
 const StyledLabel = styled(Label)`
   font-size: 15px;
   width: 100%;
-  color: white;
+  color: #555555;
   display: flex;
   font-weight: 600;
   align-items: flex-start;
@@ -72,7 +71,7 @@ const StyledLabel = styled(Label)`
 const StyledHeading = styled.h1`
   font-size: 40px;
   font-weight: 400;
-  color: white;
+  color: #555555;
   margin-top: 30px;
   font-weight: 600;
   @media (max-width: 600px) {
@@ -105,7 +104,7 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledText = styled(Text)`
-  color: white;
+  color: #555555;
   font-size: 15px;
   margin-bottom: 10px;
   font-weight: 500;

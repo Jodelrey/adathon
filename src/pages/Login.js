@@ -17,15 +17,18 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledForm = styled.form`
-  width: 40%;
+  width: 30%;
   height: 250px;
   display: flex;
   margin-top: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 900px) {
+    width: 50%;
+  }
   @media (max-width: 600px) {
-    width: 80%;
+    width: 70%;
   }
 `;
 
@@ -37,29 +40,22 @@ const StyledInput = styled(Input)`
   border: none;
   background-color: #aaaaaa;
   outline: none;
-  width: 350px;
+  width: 100%;
   padding: 10px;
   font-size: 15px;
   color: white;
-  font-weight: 600;
-  margin-left: 20px;
-  @media (max-width: 600px) {
-    width: 80%;
-    margin-left: 0;
-  }
+  font-weight: 500;
 `;
 
 const StyledLabel = styled(Label)`
-  font-size: 20px;
+  font-size: 17px;
   width: 100%;
   color: #555555;
   display: flex;
   font-weight: 600;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   justify-content: space-between;
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
 `;
 
 const StyledHeading = styled.h1`
