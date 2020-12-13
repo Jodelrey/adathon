@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ApiCall from "../utils/ApiCall";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../context/UserContext";
 import useFetch from "../hooks/useFetch";
@@ -129,96 +129,86 @@ const StyledLink = styled(Link)`
 `;
 
 const Login = () => {
+  const [error, setError] = useState(false);
   const {
     setIsLogged,
     setLoginPassword,
     setLoginUser,
     loginUser,
     loginPassword,
+    isLogged,
   } = useContext(UserContext);
+  const history = useHistory();
 
   const signIn = (event) => {
     event.preventDefault();
     setLoginUser(event.target.email.value);
     setLoginPassword(event.target.password.value);
   };
- 
- 
+
   useEffect(() => {
-    console.log(loginUser, loginPassword)
+    console.log(loginUser, loginPassword);
 
     const headers = new Headers({
       "Content-Type": "application/json",
-  })
+    });
 
-    fetch(
-      `${ApiCall}/usuario/ingresar`,
-      {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify({
-          email: loginUser,
-          password: loginPassword,
-        }),
-      },
-    )
+    fetch(`${ApiCall}/usuario/ingresar`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        email: loginUser,
+        password: loginPassword,
+      }),
+    })
       .then((response) => {
         console.log(response);
         if (!response.ok) {
           throw new Error(response.error);
         } else {
-          setIsLogged(true)
+          setIsLogged(true);
+          history.push("/");
         }
       })
-      .catch((error) => console.log(error));
-
-  }, [loginUser, loginPassword]);
-
-  // const loginInfo = useFetch(
-  //   "/usuario/login",
-  //   "POST",
-  //   {
-  //     email: loginUser,
-  //     password: loginPassword,
-  //   },
-  //   { Accept: "application/json", "Content-Type": "application/json", mode: 'no-cors' },
-  //   [loginUser, loginPassword]
-  // );
+      .catch((error) => setError(error));
+  }, [loginUser, loginPassword, isLogged]);
 
   return (
-    <>
-      <StyledContainer>
-        <StyledHeading>Bienvenida</StyledHeading>
-        <StyledErrorContainer>
-          {/* {loginInfo && (
+    !isLogged && (
+      <>
+        <StyledContainer>
+          <StyledHeading>Bienvenida</StyledHeading>
+          <StyledErrorContainer>
+            {/* {error && (
             <StyledError>
               Hay un error en la contraseña o el usuario. Reinténtelo
               nuevamente.
             </StyledError>
           )} */}
-        </StyledErrorContainer>
-        <StyledForm method="post" onSubmit={(event) => signIn(event)}>
-          <StyledLabel>
-            Email
-            <StyledInput type="email" name="email" />
-          </StyledLabel>
-          <StyledLabel>
-            Contraseña
-            <StyledInput type="password" name="password" min="6" />
-          </StyledLabel>
+          </StyledErrorContainer>
+          <StyledForm method="post" onSubmit={(event) => signIn(event)}>
+            <StyledLabel>
+              Email
+              <StyledInput type="email" name="email" />
+            </StyledLabel>
+            <StyledLabel>
+              Contraseña
+              <StyledInput type="password" name="password" min="6" />
+            </StyledLabel>
+            <StyledText>
+              Si olvido su contraseña haga click
+              <StyledLink to="/signup"> aquí </StyledLink>
+            </StyledText>
+
+            <StyledButton type="submit">Ingresar</StyledButton>
+          </StyledForm>
           <StyledText>
-            Si olvido su contraseña haga click
+            Si no esta registrada hagalo
             <StyledLink to="/signup"> aquí </StyledLink>
           </StyledText>
-
-          <StyledButton type="submit">Ingresar</StyledButton>
-        </StyledForm>
-        <StyledText>
-          Si no esta registrada hagalo
-          <StyledLink to="/signup"> aquí </StyledLink>
-        </StyledText>
-      </StyledContainer>
-    </>
+        </StyledContainer>
+      </>
+    )
   );
 };
 
