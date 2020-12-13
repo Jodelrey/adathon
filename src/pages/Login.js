@@ -155,7 +155,6 @@ const Login = () => {
 
     fetch(`${ApiCall}/usuario/ingresar`, {
       method: "POST",
-      mode: "no-cors",
       headers: headers,
       body: JSON.stringify({
         email: loginUser,
