@@ -6,7 +6,7 @@ import Catalog from "../components/Catalog";
 
 const StyledContainer = styled(Container)`
   width: 100%;
-  //min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
   height: 100%;
   display: flex;
   flex-direction: column;
