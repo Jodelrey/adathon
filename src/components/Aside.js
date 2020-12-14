@@ -120,7 +120,7 @@ const Aside = () => {
               </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-              <StyledNavLink exact activeClassName="selected" to="/Nosotros">
+              <StyledNavLink exact activeClassName="selected" to="/Ventas">
                 Ventas
               </StyledNavLink>
             </DropdownItem>
@@ -130,17 +130,17 @@ const Aside = () => {
               </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-              <StyledNavLink exact activeClassName="selected" to="/Reparto">
+              <StyledNavLink exact activeClassName="selected" to="/Costos">
                 Costos
               </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-              <StyledNavLink exact activeClassName="selected" to="/Contacto">
+              <StyledNavLink exact activeClassName="selected" to="/Informes">
                 Informes
               </StyledNavLink>
             </DropdownItem>
             <DropdownItem>
-            <StyledNavLink exact activeClassName="selected" to="/Contacto">
+              <StyledNavLink exact activeClassName="selected" to="/MiCuenta">
                 Mi cuenta
               </StyledNavLink>
             </DropdownItem>
